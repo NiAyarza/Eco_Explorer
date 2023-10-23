@@ -1,0 +1,197 @@
+.background {
+    --background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .logologin {
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    width: 100%;  
+    margin-bottom: 20px;
+    margin-top: 65px;  
+    
+    img {
+      width: 300px;  
+      height: auto;
+    }
+  }
+  
+  ion-card {
+    width: 92%;
+    --background: transparent;
+    border-radius: 30px;
+    margin-top: 50px;
+    border: 2px solid black;
+    margin-left: 4%;
+  
+    ion-card-title {
+      text-align: center;
+      color: rgb(14, 13, 13);
+      font-size: 26px;
+    }
+  
+    ion-card-content {
+      ion-label {
+        color: rgb(0, 0, 0);  
+        background: transparent;
+        font-size: 18px;
+      }
+  
+      ion-input {
+        width: 83%;  /* Ancho ajustado a 85% aquí */
+        color: rgb(0, 0, 0);
+        background: transparent; 
+        border-bottom: 2px solid black;
+        padding-bottom: 5px;
+        margin: 0 auto;  
+        margin-left: 5%;  /* Desplazamiento hacia la izquierda */
+      }
+  
+      .password-wrapper {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+  
+      ion-icon {
+        position: absolute;
+        right: 10px;            // Ajustar según sea necesario
+        top: 65%;
+        transform: translateY(-50%);
+        pointer-events: auto;  // Permitir eventos de clic en el ícono
+        background: transparent;
+        color: rgb(0, 0, 0);
+        font-size: 24px;
+      }
+    }
+  }
+  
+  .email {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .contrasenia {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+  }
+  
+  ion-button {
+    margin-top: 30px;
+    font-weight: bold; /* Aquí se agregó el "bold" al texto del botón */
+    font-size: 18px;   /* Aquí se establece el tamaño de la letra a 18px */
+  }
+  
+  .forgot-password {
+    text-align: center;
+    margin-top: 30px;
+    color: rgb(152, 158, 177);
+  }
+  
+  .create-account {
+    text-align: center;
+    margin-top: 30px;
+    color: rgb(93, 104, 248);
+  }
+  
+  /* Dispositivos móviles pequeños (teléfonos en modo retrato) */
+  @media only screen and (max-width: 600px) {
+    .logologin img {
+      width: 300px;
+    }
+  
+    ion-card {
+      width: 88%;
+      margin-left: 6%;
+    }
+  
+    ion-input {
+      font-size: 16px;
+      width: 81%;
+      margin-left: 4.5%;
+    }
+  
+    ion-icon {
+      right: 8px;
+      font-size: 22px;
+    }
+  }
+  
+  /* Dispositivos móviles grandes (teléfonos en modo paisaje) */
+  @media only screen and (min-width: 601px) and (max-width: 768px) {
+    .logologin img {
+      width: 300px;
+    }
+  
+    ion-card {
+      width: 90%;
+      margin-left: 5%;
+    }
+  
+    ion-input {
+      font-size: 17px;
+      width: 82%;
+      margin-left: 5%;
+    }
+  
+    ion-icon {
+      right: 9px;
+      font-size: 23px;
+    }
+  }
+  
+  /* Tablets y dispositivos pequeños de escritorio */
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .logologin img {
+      width: 300px;
+    }
+  
+    ion-card {
+      width: 91%;
+      margin-left: 4.5%;
+    }
+  
+    ion-input {
+      font-size: 18px;
+      width: 83%;
+      margin-left: 5%;
+    }
+  
+    ion-icon {
+      right: 10px;
+      font-size: 24px;
+    }
+  }
+  
+  /* Pantallas de escritorio más grandes */
+  @media only screen and (min-width: 1025px) {
+    .logologin img {
+      width: 300px;
+    }
+  
+    ion-card {
+      width: 92%;
+      margin-left: 4%;
+    }
+  
+    ion-input {
+      font-size: 18px;
+      width: 83%;
+      margin-left: 5%;
+    }
+  
+    ion-icon {
+      right: 10px;
+      font-size: 24px;
+    }
+  }

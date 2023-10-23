@@ -1,3 +1,43 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-toolbar *ngIf="showMenu">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+  
+  <ion-menu id="mainMenu" side="start" contentId="main-content" type="overlay" [disabled]="menuDisabled" >
+    
+    <ion-content  >
+      <div style="background-color: #7FC15E; padding: 10px; text-align: center; font-weight: bold; color: rgb(0, 0, 0);">
+        Nombre Usuario
+      </div>
+  
+        <div class="Perfil">
+          <ion-icon name="person-outline" slot="start"></ion-icon>
+          Perfil
+        </div>
+        <div class="comoreciclar">
+          <ion-icon name="leaf-outline" slot="start"></ion-icon>
+          Como reciclar
+        </div>
+        <div class="puntosreciclaje">
+          <ion-icon name="location-outline" slot="start"></ion-icon>
+          Puntos de reciclaje
+        </div>
+        <div class="servicios">
+          <ion-icon name="document-text-outline" slot="start"></ion-icon>
+          Nuestros servicios
+        </div>
+        <div class="cerrar-sesion" >
+          <ion-icon name="power-outline" slot="start" ></ion-icon>
+          Cerrar sesión
+        </div>
+  
+    </ion-content>
+  </ion-menu>
+  
+  <!-- Contenido Principal -->
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+  
+  <!-- colocar api de google maps -->
 </ion-app>

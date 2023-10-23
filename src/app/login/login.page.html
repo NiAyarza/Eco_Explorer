@@ -1,0 +1,37 @@
+<ion-header>
+</ion-header>
+
+<ion-content class="background">
+  <div class="logologin">
+    <img src="../../assets/images/logologin.png">
+  </div>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Ingresa tu cuenta</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="email">
+          <ion-label>Email</ion-label>
+          <ion-input formControlName="email" type="email" placeholder="ejemplo@email.com"></ion-input>
+        </div>
+
+        <div class="contrasenia">
+          <ion-label>Contraseña</ion-label>
+          <div class="password-wrapper">
+            <ion-input formControlName="password" [type]="showPassword ? 'text' : 'password'" placeholder="Hola.2023"></ion-input>
+            <ion-icon slot="end" name="eye-outline" (click)="togglePassword()" class="password-toggle-icon"></ion-icon>
+          </div>
+        </div>
+
+        <ion-button expand="block" color="success" type="submit" [disabled]="!loginForm.valid">Iniciar sesión</ion-button>
+      </form>
+
+      <p class="forgot-password">Olvidaste tu contraseña?</p>
+      <p class="create-account"> <a href="/registro">Crea tu cuenta</a></p>
+    </ion-card-content>
+</ion-card>
+
+</ion-content>

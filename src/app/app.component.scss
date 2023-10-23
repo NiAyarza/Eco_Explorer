@@ -1,0 +1,68 @@
+/* CSS DEL MENU DESPLEGABLE */
+ion-menu-button {
+    --color: rgb(0, 0, 0);
+  }
+  
+  ion-menu {
+    --width: 70%;
+    --background: #7FC15E;
+    --border-color: #7FC15E;
+  }
+  
+  ion-menu ion-content {
+    --background: #7FC15E;
+    --border-color: #7FC15E;
+  }
+  
+  ion-header {
+    --background: #7FC15E;
+    --color: white;
+  }
+  
+  ion-toolbar {
+    --background: #ffffff;
+  }
+  
+  /* Estilizado general para todos los ítems del menú */
+  .Perfil,
+  .comoreciclar,
+  .puntosreciclaje,
+  .servicios,
+  .cerrar-sesion {
+    background-color: #7FC15E;
+    color: rgb(0, 0, 0); /* Color negro para el texto */
+    padding: 14px 20px;
+    border-bottom: 1px solid #7FC15E;
+    display: flex;
+    align-items: center;
+  }
+  
+  .Perfil {
+    margin-top: 100px; /* Agrega un margen superior a "Perfil" para desplazar todos los elementos */
+  }
+  
+  /* Específico para el ítem "Cerrar sesión" */
+  .cerrar-sesion {
+    margin-top: 200px; /* Desplaza "Cerrar sesión" al fondo */
+  }
+  
+  /* Color de los íconos por separado */
+  .Perfil ion-icon,
+  .comoreciclar ion-icon,
+  .puntosreciclaje ion-icon,
+  .servicios ion-icon {
+    color: rgb(255, 255, 255);
+    margin-right: 10px;
+  }
+  
+  .cerrar-sesion ion-icon {
+    color: rgb(255, 0, 0); /* Color rojo específico para el ícono "Cerrar sesión" */
+    margin-right: 10px;
+  }
+  
+  /* CSS DEL HOME 
+  .background {
+    --background: #ffffff;
+    display: flex;
+  }*/
+  
