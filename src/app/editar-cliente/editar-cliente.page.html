@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-buttons slot="start">
+      <ion-back-button defaultHref="/perfil"></ion-back-button>
+  </ion-buttons>
+</ion-header>
+
+<ion-content class="background">
+  <ion-card>
+      <ion-card-header>
+        <ion-card-title>Editar Perfil</ion-card-title>
+      </ion-card-header>
+  
+      <ion-card-content>
+
+        <div class="nombre">
+          <label>Nombre:</label>
+          <input type="text" [(ngModel)]="nombre" #nombreInput disabled>
+          <button (click)="habilitarEdicion('nombre')">Editar</button>
+          <button (click)="guardarCambios('nombre')">Aceptar</button>
+        </div>
+
+        <div class="apellido">
+          <label>Apellido:</label>
+          <input type="text" [(ngModel)]="apellido" #apellidoInput disabled>
+          <button (click)="habilitarEdicion('apellido')">Editar</button>
+          <button (click)="guardarCambios('apellido')">Aceptar</button>
+        </div>
+
+        <div class="comuna">
+          <ion-label position="stacked">Comuna</ion-label>
+          <ion-select aria-label="comuna" id="comuna" placeholder="Seleciona tu comuna">
+              <ion-select-option value="comuna1">Concepción</ion-select-option>
+              <ion-select-option value="comuna2">Talcahuano</ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="input-container">
+          <ion-label for="password">Contraseña</ion-label>
+          <ion-input id="contraseña" [type]="passwordType"  placeholder="Hola.2023"></ion-input>
+          <ion-icon name="eye-outline" class="toggle-password" (click)="togglePassword()"></ion-icon>
+        </div>
+
+        <div class="input-container">
+          <ion-label for="newPassword">Nueva Contraseña</ion-label>
+          <ion-input id="newPassword" [type]="newPasswordType" placeholder="Hola.2023"></ion-input>
+          <ion-icon name="eye-outline" class="toggle-password" (click)="toggleNewPassword()"></ion-icon>
+        </div>
+
+        <ion-button expand="block" color="success">Confirmar</ion-button>
+      </ion-card-content>
+    </ion-card>
+</ion-content>

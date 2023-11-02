@@ -35,12 +35,7 @@ export class LoginPage implements OnInit {
       const email = this.loginForm.get('email')?.value;
       const password = this.loginForm.get('password')?.value;
 
-      const userData = {
-        email: email,
-        password: password
-      };
-
-      this.authService.login(userData).subscribe(
+      this.authService.login(email, password).subscribe(
         (response) => {
           console.log('Login exitoso', response);
           this.router.navigateByUrl('/home')
