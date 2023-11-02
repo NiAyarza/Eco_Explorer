@@ -16,8 +16,8 @@ export interface ClienteData {
 export class EditarClientePage implements OnInit {
 
   // Usaremos ViewChild para obtener referencias a los campos
-  @ViewChild('nombre', { static: false }) nombreInput!: ElementRef;
-  @ViewChild('apellido', { static: false }) apellidoInput!: ElementRef;
+  @ViewChild('nombreInput', { static: false }) nombreInput!: ElementRef;
+  @ViewChild('apellidoInput', { static: false }) apellidoInput!: ElementRef;
   // ... puedes añadir más campos de esta manera
 
   // Variables para el enlace bidireccional de datos con [(ngModel)]
@@ -27,6 +27,25 @@ export class EditarClientePage implements OnInit {
 
   constructor(private authService: AuthService) { }
 
+  passwordType: string = 'password'; // Esto mostrará la contraseña como asteriscos por defecto
+  newPasswordType: string = 'password';
+
+  toggleVisibility(inputType: string) {
+    if (inputType === 'password') {
+      return 'text';
+    } else {
+      return 'password';
+    }
+  }
+  
+  togglePassword() {
+    this.passwordType = this.toggleVisibility(this.passwordType);
+  }
+
+  toggleNewPassword() {
+    this.newPasswordType = this.toggleVisibility(this.newPasswordType);
+  }
+  
   habilitarEdicion(campoId: string) {
     if (campoId === 'nombre') {
       this.nombreInput.nativeElement.disabled = false;
