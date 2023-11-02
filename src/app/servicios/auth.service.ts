@@ -59,10 +59,10 @@ export class AuthService  {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     });
 
-    return this.http.get(`${this.apiUrl}/obtenerDatosCliente`, { headers: headers })
-        .pipe(
-            catchError(this.handleError)
-        );
+    return this.http.get<ClienteData>(`${this.apiUrl}/obtenerDatosCliente`, { headers: headers })
+    .pipe(
+        catchError(this.handleError)
+    );
   }
 
   private handleError(error: any) {
