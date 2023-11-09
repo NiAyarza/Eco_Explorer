@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu"></ion-back-button>
+  </ion-buttons>
+</ion-header>
+
+<ion-content class="background">
+  
+  <ion-card>
+    
+    <ion-card-header>
+      <div class="header-flex">
+          <ion-card-title>Perfil</ion-card-title>
+          <ion-icon name="pencil-outline" (click)="goToEditProfile()"></ion-icon>
+      </div>
+    </ion-card-header>
+    <ion-card-content>
+
+      <div class="nombre">
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input type="text" placeholder="Juanito" [(ngModel)]="datosCliente.nombre"></ion-input>
+      </div>
+      
+      <div class="apellido">
+        <ion-label position="stacked">Apellido</ion-label>
+        <ion-input type="text" placeholder="Perez" [(ngModel)]="datosCliente.apellido"></ion-input>
+      </div>
+      
+      <div class="fecha">
+        <ion-label position="stacked">Fecha de Nacimiento</ion-label>
+        <ion-input type="date" [(ngModel)]="datosCliente.fechaNacimiento"></ion-input>
+      </div>
+      
+      <div class="email">
+        <ion-label>Email</ion-label>
+        <ion-input type="email" placeholder="ejemplo@email.com" [(ngModel)]="datosCliente.email"></ion-input>
+      </div>
+      
+      <div class="comuna">
+        <ion-label>Comuna</ion-label>
+        <ion-input type="text" [value]="datosCliente.comuna" disabled></ion-input>
+      </div>
+
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

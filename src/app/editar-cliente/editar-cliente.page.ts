@@ -1,12 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../servicios/auth.service';
+import { ClienteData } from '../interfaces/clienteData'; //
 
-export interface ClienteData {
-  [key: string]: string | number;
-  nombre: string;
-  apellido: string;
-  //... añade los otros campos que necesites
-}
 
 @Component({
   selector: 'app-editar-cliente',

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { catchError, map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { ClienteData } from '../editar-cliente/editar-cliente.page';
+import { ClienteData } from '../interfaces/clienteData';
 
  
 @Injectable({
@@ -42,7 +42,7 @@ export class AuthService  {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     });
 
-    return this.http.post(`${this.apiUrl}/editar`, data, { headers: headers })
+    return this.http.post(`${this.apiUrl}/editar.php`, data, { headers: headers })
         .pipe(
             map((response: any) => {
                 if (response.error) {
@@ -59,7 +59,7 @@ export class AuthService  {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     });
 
-    return this.http.get<ClienteData>(`${this.apiUrl}/obtenerDatosCliente`, { headers: headers })
+    return this.http.get<ClienteData>(`${this.apiUrl}/obtenerDatosCliente.php`, { headers: headers })
     .pipe(
         catchError(this.handleError)
     );
