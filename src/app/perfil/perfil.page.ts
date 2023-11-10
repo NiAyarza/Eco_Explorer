@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../servicios/auth.service';
 import { ClienteData } from '../interfaces/clienteData'; // Asegúrate de proporcionar la ruta correcta
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -9,35 +10,54 @@ import { ClienteData } from '../interfaces/clienteData'; // Asegúrate de propor
 })
 export class PerfilPage implements OnInit {
 
-  datosCliente!: ClienteData;
+  datosCliente: ClienteData = {
+    nombre: '',
+    apellido: '',
+    fecha_nac: '',
+    email: '',
+    comuna: ''
+  };
+
   comunas: any[] = [];
   
-  constructor(private authService: AuthService, private clienteService: AuthService) { }
+  constructor(private authService: AuthService, private clienteService: AuthService, private router : Router) { }
 
-  ngOnInit() {
-    this.cargarComunas();
-    this.cargarDatosCliente();
-  }
+  datosCargados = false;
+  comunasCargadas = false;
 
   cargarDatosCliente() {
     this.clienteService.obtenerDatosCliente().subscribe(
-      (data: ClienteData) => {
-        // Manejar la respuesta exitosa aquí
-        console.log('Datos del cliente:', data);
-        this.datosCliente = data; // Asignar los datos al objeto del componente
+      (response: any) => {
+        if (response && response.success && response.data) {
+          this.asignarDatosCliente(response.data);
+          this.datosCargados = true;
+          this.intentarActualizarNombreComuna();
+          console.log(response.data)
+        }
       },
       (error) => {
-        // Manejar el error aquí
+        
         console.error('Error al obtener datos del cliente:', error);
       }
     );
+  }
+
+  private asignarDatosCliente(data: any): void {
+    this.datosCliente = {
+      nombre: data.nombre,
+      apellido: data.apellido,
+      fecha_nac: data.fecha_nac,
+      email: data.email,
+      comuna: data.Comu_id
+    };
   }
 
   cargarComunas() {
     this.authService.getComunas().subscribe(
       (data: any) => {
         this.comunas = data;
-        this.actualizarNombreComuna(); // Llama a una función para actualizar el nombre de la comuna
+        this.comunasCargadas = true;
+        this.intentarActualizarNombreComuna();
       },
       (error) => {
         console.error('Error:', error);
@@ -45,12 +65,27 @@ export class PerfilPage implements OnInit {
     );
   }
 
+  intentarActualizarNombreComuna() {
+    if (this.datosCargados && this.comunasCargadas) {
+      this.actualizarNombreComuna();
+    }
+  }
+
   actualizarNombreComuna() {
-    if (this.comunas && this.datosCliente.comuna) {
-      const comunaEncontrada = this.comunas.find((comuna: any) => comuna.id === this.datosCliente.comuna);
+    if (this.comunas.length > 0 && this.datosCliente && this.datosCliente.comuna) {
+      const comunaEncontrada = this.comunas.find(comuna => comuna.id === this.datosCliente.comuna);
       if (comunaEncontrada) {
-        this.datosCliente.comuna = comunaEncontrada.nombre;
+        this.datosCliente.comuna = comunaEncontrada.nombre; // Asignar el nombre de la comuna
       }
     }
+  }
+
+  goToEditProfile(){
+    this.router.navigateByUrl('editar-cliente');
+  }
+
+  ngOnInit() {
+    this.cargarComunas();
+    this.cargarDatosCliente();
   }
 }

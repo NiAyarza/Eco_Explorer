@@ -30,7 +30,7 @@
             $response = array("error" => "Dato inválido.");
         }
 
-        function validarToken($token) {
+        /*function validarToken($token) {
         
             $key = "EcoExplorer";
         
@@ -48,7 +48,7 @@
             } catch (Exception $e) {
                 return ["error" => "Token inválido."];
             }
-        }
+        }*/
 
         function actualizarNombre($conn, $token, $nuevoNombre) {
             $userData = validarToken($token);

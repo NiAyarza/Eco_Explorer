@@ -4,7 +4,7 @@
     require '../vendor/autoload.php';
 
     function obtenerDatosClientePorId($conn, $userEmail) {
-        $stmt = $conn->prepare("SELECT * FROM clientes WHERE email = ?");
+        $stmt = $conn->prepare("SELECT * FROM cliente WHERE email = ?");
         $stmt->bind_param("s", $userEmail); 
         $stmt->execute();
     
@@ -21,15 +21,13 @@
         return $datosCliente;
     }
 
-    $token = $_SERVER['HTTP_AUTHORIZATION'] ?? null; 
-    
-    if (!$token) {
-        echo json_encode(["success" => false, "error" => "Token no proporcionado"]);
+    $userEmail = $_GET['email'] ?? null;
+
+    if (!$userEmail) {
+        echo json_encode(["success" => false, "error" => "Email no proporcionado"]);
         exit();
     }
 
-    $datosToken = validarToken($token);
-    $userEmail = $datosToken["email"];
     $datosCliente = obtenerDatosClientePorId($conn, $userEmail);
 
     if (!$datosCliente) {

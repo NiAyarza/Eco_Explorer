@@ -13,7 +13,7 @@
       </div>
   
         <div class="Perfil">
-          <ion-icon name="person-outline" slot="start"></ion-icon>
+          <ion-icon name="person-outline" slot="start" (click)="goToProfile()"></ion-icon>
           Perfil
         </div>
         <div class="comoreciclar">
@@ -29,7 +29,7 @@
           Nuestros servicios
         </div>
         <div class="cerrar-sesion" >
-          <ion-icon name="power-outline" slot="start" ></ion-icon>
+          <ion-icon name="power-outline" slot="start" (click)="onLogoutClick"></ion-icon>
           Cerrar sesión
         </div>
   

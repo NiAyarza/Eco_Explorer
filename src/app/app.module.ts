@@ -9,7 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http'; 
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms'; 
-
+import { InterceptorService } from './servicios/interceptor.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy , useClass: IonicRouteStrategy },
+              { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

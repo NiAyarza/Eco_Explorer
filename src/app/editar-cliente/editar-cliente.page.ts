@@ -56,6 +56,9 @@ export class EditarClientePage implements OnInit {
     let data: ClienteData = {
       nombre: '',
       apellido: '',
+      fecha_nac: '',
+      email: '', 
+      comuna: ''
     };
   
     if (campoId === 'nombre') {
