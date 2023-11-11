@@ -30,9 +30,9 @@ export class PerfilPage implements OnInit {
       (response: any) => {
         if (response && response.success && response.data) {
           this.asignarDatosCliente(response.data);
-          this.datosCargados = true;
-          this.intentarActualizarNombreComuna();
           console.log(response.data)
+          this.datosCargados = true;
+          this.actualizarNombreComuna();
         }
       },
       (error) => {
@@ -48,16 +48,18 @@ export class PerfilPage implements OnInit {
       apellido: data.apellido,
       fecha_nac: data.fecha_nac,
       email: data.email,
-      comuna: data.Comu_id
+      comuna: data.Comu_id,
     };
+    
   }
 
   cargarComunas() {
     this.authService.getComunas().subscribe(
       (data: any) => {
         this.comunas = data;
+        console.log(this.comunas);
         this.comunasCargadas = true;
-        this.intentarActualizarNombreComuna();
+        this.cargarDatosCliente();
       },
       (error) => {
         console.error('Error:', error);
@@ -65,20 +67,26 @@ export class PerfilPage implements OnInit {
     );
   }
 
-  intentarActualizarNombreComuna() {
-    if (this.datosCargados && this.comunasCargadas) {
-      this.actualizarNombreComuna();
-    }
-  }
-
   actualizarNombreComuna() {
-    if (this.comunas.length > 0 && this.datosCliente && this.datosCliente.comuna) {
-      const comunaEncontrada = this.comunas.find(comuna => comuna.id === this.datosCliente.comuna);
+    console.log('Comunas cargadas:', this.comunas);
+    console.log('Datos cliente:', this.datosCliente);
+  
+    if (this.datosCliente && this.datosCliente.comuna && this.comunas.length > 0) {
+      // Asegúrate de que el comuna_id sea un número para la comparación
+      const comunaId = parseInt(this.datosCliente.comuna);
+      console.log('ID de comuna buscada:', comunaId);
+  
+      // Encuentra la comuna en el array basándose en el comuna_id
+      const comunaEncontrada = this.comunas.find(comuna => parseInt(comuna.comuna_id) === comunaId);
+      console.log('Comuna encontrada:', comunaEncontrada);
+  
       if (comunaEncontrada) {
-        this.datosCliente.comuna = comunaEncontrada.nombre; // Asignar el nombre de la comuna
+        this.datosCliente.comuna = comunaEncontrada.nombre;
+        console.log('Nombre de comuna asignado:', this.datosCliente.comuna);
       }
     }
   }
+  
 
   goToEditProfile(){
     this.router.navigateByUrl('editar-cliente');
@@ -86,6 +94,5 @@ export class PerfilPage implements OnInit {
 
   ngOnInit() {
     this.cargarComunas();
-    this.cargarDatosCliente();
   }
 }

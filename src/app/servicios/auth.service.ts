@@ -66,12 +66,26 @@ export class AuthService  {
     this.router.navigateByUrl('/login'); 
   }
 
-  editarCliente(data: any) {
+  editarCliente(data: ClienteData) {
     const headers = new HttpHeaders({
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     });
 
-    return this.http.post(`${this.apiUrl}/editar.php`, data, { headers: headers })
+    // Obtener el email del localStorage
+    const email = localStorage.getItem('email');
+
+    // Asegúrate de que el email exista
+    if (!email) {
+        throw new Error('No se encontró el email en el almacenamiento local');
+    }
+
+    // Agregar el email a los datos enviados
+    const dataToSend = {
+        ...data,
+        email: email
+    };
+
+    return this.http.post(`${this.apiUrl}/editar.php`, dataToSend, { headers: headers })
         .pipe(
             map((response: any) => {
                 if (response.error) {
@@ -81,7 +95,7 @@ export class AuthService  {
             }),
             catchError(this.handleError)
         );
-  }
+}
 
   obtenerDatosCliente(): Observable<ClienteData> {
     const email = localStorage.getItem('email');

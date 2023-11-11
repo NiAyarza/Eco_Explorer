@@ -1,79 +1,65 @@
 <?php
     require_once "baseDatos.php";
-    require '../vendor/autoload.php'; 
-    use \Firebase\JWT\JWT; 
-    use Firebase\JWT\Key;
     
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $response = array();
 
         $inputData = json_decode(file_get_contents("php://input"), true);
-        $token = $_SERVER["HTTP_AUTHORIZATION"] ?? null;
+        $email = $inputData["email"] ?? null;
 
-        if (!$token) {
-            $response = array("error" => "Se requiere autenticación.");
+        if (!$email) {
+            $response = array("error" => "Se requiere email para la autenticación.");
             echo json_encode($response);
             exit();
         }
 
-        $token = str_replace("Bearer ", "", $token);
-
         if (isset($inputData["nombre"])) {
-            $response = actualizarNombre($conn, $token, $inputData["nombre"]);
+            $response = actualizarNombre($conn, $email, $inputData["nombre"]);
         } elseif (isset($inputData["apellido"])) {
-            $response = actualizarApellido($conn, $token, $inputData["apellido"]);
+            $response = actualizarApellido($conn, $email, $inputData["apellido"]);
         } elseif (isset($inputData["comuna"])) {
-            $response = actualizarComuna($conn, $token, $inputData["comuna"]);
+            $response = actualizarComuna($conn, $email, $inputData["comuna"]);
         } elseif (isset($inputData["contrasena"])) {
-            $response = actualizarContrasena($conn, $token, $inputData["contrasena"]);
+            $response = actualizarContrasena($conn, $email, $inputData["contrasena"]);
         } else {
             $response = array("error" => "Dato inválido.");
         }
 
-        /*function validarToken($token) {
-        
-            $key = "EcoExplorer";
-        
-            try {
-                $decoded = JWT::decode($token, $key, ['HS256']);
-        
-                if (isset($decoded->data->userId) && isset($decoded->data->email)) {
-                    return [
-                        "rut" => $decoded->data->userId,
-                        "email" => $decoded->data->email
-                    ];
-                } else {
-                    return ["error" => "Token inválido."];
-                }
-            } catch (Exception $e) {
-                return ["error" => "Token inválido."];
-            }
-        }*/
+        echo json_encode($response);
+    }
 
-        function actualizarNombre($conn, $token, $nuevoNombre) {
-            $userData = validarToken($token);
+    function obtenerRutPorEmail($conn, $email) {
+        $stmt = $conn->prepare("SELECT rut FROM cliente WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
+            return $row['rut'];
+        }
+        return false;
+    }
+
+        function actualizarNombre($conn, $email, $nuevoNombre) {
             if (isset($userData["error"])) return $userData;
 
-            $stmt = $conn->prepare("UPDATE cliente SET nombre=? WHERE rut=?");
-            $stmt->bind_param("ss", $nuevoNombre, $userData['rut']);
+            $stmt = $conn->prepare("UPDATE cliente SET nombre=? WHERE email=?");
+            $stmt->bind_param("ss", $nuevoNombre, $email);
             $result = $stmt->execute();
             $stmt->close();
             return $result ? array("success" => "Nombre actualizado.") : array("error" => "Error al actualizar el nombre.");
         }
 
-        function actualizarApellido($conn, $token, $nuevoApellido) {
-            $userData = validarToken($token);
+        function actualizarApellido($conn, $email, $nuevoApellido) {
             if (isset($userData["error"])) return $userData;
 
-            $stmt = $conn->prepare("UPDATE cliente SET apellido=? WHERE rut=?");
-            $stmt->bind_param("ss", $nuevoApellido, $userData['rut']);
+            $stmt = $conn->prepare("UPDATE cliente SET apellido=? WHERE email=?");
+            $stmt->bind_param("ss", $nuevoApellido, $email);
             $result = $stmt->execute();
             $stmt->close();
             return $result ? array("success" => "Apellido actualizado.") : array("error" => "Error al actualizar el apellido.");
         }
 
-        function actualizarComuna($conn, $token, $nuevoComuna) {
-            $userData = validarToken($token);
+        function actualizarComuna($conn, $email, $nuevoComuna) {
             if (isset($userData["error"])) return $userData;
 
             // Validar comuna
@@ -88,15 +74,14 @@
                 return array("error" => "Comuna ID no es válida.");
             }
 
-            $stmt = $conn->prepare("UPDATE cliente SET comuna_id=? WHERE rut=?");
-            $stmt->bind_param("is", $comuna_id, $userData['rut']);
+            $stmt = $conn->prepare("UPDATE cliente SET comuna_id=? WHERE email=?");
+            $stmt->bind_param("is", $comuna_id, $email);
             $result = $stmt->execute();
             $stmt->close();
             return $result ? array("success" => "Comuna actualizada.") : array("error" => "Error al actualizar la comuna.");
         }
 
-        function actualizarContrasena($conn, $token, $nuevaContrasena) {
-            $userData = validarToken($token);
+        function actualizarContrasena($conn, $email, $nuevaContrasena) {
             if (isset($userData["error"])) return $userData;
 
             // Validar longitud contraseña
@@ -108,8 +93,8 @@
             $hashed_password = password_hash($nuevaContrasena, PASSWORD_DEFAULT);
 
             // Obtener la contraseña actual del usuario
-            $stmt = $conn->prepare("SELECT contraseña FROM cliente WHERE rut=?");
-            $stmt->bind_param("s", $userData['rut']);
+            $stmt = $conn->prepare("SELECT contraseña FROM cliente WHERE email=?");
+            $stmt->bind_param("s", $email);
             $stmt->execute();
             $result = $stmt->get_result();
             $user = $result->fetch_assoc();
@@ -120,12 +105,12 @@
                 return array("error" => "La contraseña es la misma que la actual. Elije otra.");
             }
 
-            $stmt = $conn->prepare("UPDATE cliente SET contraseña=? WHERE rut=?");
-            $stmt->bind_param("ss", $hashed_password, $userData['rut']);
+            $stmt = $conn->prepare("UPDATE cliente SET contraseña=? WHERE email=?");
+            $stmt->bind_param("ss", $hashed_password, $email);
             $result = $stmt->execute();
             $stmt->close();
             return $result ? array("success" => "Contraseña actualizada.") : array("error" => "Error al actualizar la contraseña.");
         }
-    }
+    
 
 ?>
