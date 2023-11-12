@@ -14,6 +14,9 @@ export class EditarClientePage implements OnInit {
   comunaSeleccionada: string = ''; 
   modoEdicion: boolean = false;
 
+  datosCargados = false;
+  comunasCargadas = false;
+
   datosCliente: ClienteData = {
     nombre: '',
     apellido: '',
@@ -32,12 +35,16 @@ export class EditarClientePage implements OnInit {
   // Variables para el enlace bidireccional de datos con [(ngModel)]
   nombre: string = "";
   apellido: string = "";
+  newPassword: string = "";
   // ... puedes añadir más variables para otros campos
 
   constructor(private authService: AuthService, private clienteService: AuthService, private router : Router) { }
 
   passwordType: string = 'password'; // Esto mostrará la contraseña como asteriscos por defecto
   newPasswordType: string = 'password';
+
+  editarContrasena: boolean = false;
+  mostrarNuevaContrasena: boolean = false;
 
   toggleVisibility(inputType: string) {
     if (inputType === 'password') {
@@ -64,6 +71,9 @@ export class EditarClientePage implements OnInit {
       this.apellidoInput.nativeElement.focus();
     } else if (campoId === 'comuna') {
       this.modoEdicion = true; // Habilitar el modo de edición para la comuna
+    }if (campoId === 'contraseña') {
+      this.editarContrasena = true;
+      this.mostrarNuevaContrasena = true;
     }
     // ... puedes añadir más campos de esta manera
   }
@@ -71,34 +81,40 @@ export class EditarClientePage implements OnInit {
   guardarCambios(campoId: string) {
     let data: any = {}; // Cambia esto a un objeto genérico
 
-  if (campoId === 'nombre') {
-    data.nombre = this.datosCliente.nombre;
-    this.nombreInput.nativeElement.disabled = true;
-  } else if (campoId === 'apellido') {
-    data.apellido = this.datosCliente.apellido;
-    this.apellidoInput.nativeElement.disabled = true;
-  } else if (campoId === 'comuna') {
-    data.comuna = this.comunaSeleccionada;
-    this.modoEdicion = false;
-  }
-  // Agrega aquí más campos si es necesario
+    if (campoId === 'nombre') {
+      data.nombre = this.datosCliente.nombre;
+      this.nombreInput.nativeElement.disabled = true;
+    } else if (campoId === 'apellido') {
+      data.apellido = this.datosCliente.apellido;
+      this.apellidoInput.nativeElement.disabled = true;
+    } else if (campoId === 'comuna') {
+      data.comuna = this.comunaSeleccionada;
+      this.modoEdicion = false;
+    } else if (campoId === 'newPassword') {
+      // Añade aquí la lógica para validar y actualizar la contraseña
+      // Por ejemplo, puedes enviar la contraseña actual y la nueva al backend para que se realice la validación y actualización
+      let data = {
+        contraseñaActual: this.passwordType, // Asumiendo que tienes una variable para esto
+        nuevaContrasena: this.newPassword // Asumiendo que tienes una variable para esto
+      };
+    }
+    // Agrega aquí más campos si es necesario
 
-  console.log('Datos a guardar:', data);
+    console.log('Datos a guardar:', data);
 
 
-    this.authService.editarCliente(data)
-      .subscribe(
-        response => {
-          console.log(response); // Aquí manejas la respuesta
-        },
-        error => {
-          console.error(error); // Aquí manejas el error
-        }
-      );
-  }
+      this.authService.editarCliente(data)
+        .subscribe(
+          response => {
+            console.log(response); // Aquí manejas la respuesta
+          },
+          error => {
+            console.error(error); // Aquí manejas el error
+          }
+        );
+    };
 
-  datosCargados = false;
-  comunasCargadas = false;
+  
 
   cargarDatosCliente() {
     this.clienteService.obtenerDatosCliente().subscribe(
@@ -141,7 +157,6 @@ export class EditarClientePage implements OnInit {
   }
 
   actualizarNombreComuna() {
-  
     if (this.datosCliente && this.datosCliente.comuna && this.comunas.length > 0) {
       // Asegúrate de que el comuna_id sea un número para la comparación
       const comunaId = parseInt(this.datosCliente.comuna);
@@ -165,3 +180,4 @@ export class EditarClientePage implements OnInit {
   }
 
 }
+

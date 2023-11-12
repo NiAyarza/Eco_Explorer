@@ -66,7 +66,7 @@ export class AuthService  {
     this.router.navigateByUrl('/login'); 
   }
 
-  editarCliente(data: ClienteData) {
+  editarCliente(data: any) {
     const headers = new HttpHeaders({
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     });

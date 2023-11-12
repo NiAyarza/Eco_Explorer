@@ -49,17 +49,22 @@
             </ng-template>
           </ion-select>
 
-          <div class="input-container">
-            <ion-label for="password">Contraseña</ion-label>
-            <ion-input id="contraseña" [type]="passwordType"  placeholder="Hola.2023"></ion-input>
-            <ion-icon name="eye-outline" class="toggle-password" (click)="togglePassword()"></ion-icon>
+          <div *ngIf="editarContrasena">
+            <div class="contraseña">
+              <ion-label for="password">Contraseña</ion-label>
+              <ion-input id="contraseña" [type]="passwordType" placeholder="Hola.2023"></ion-input>
+              <ion-icon name="eye-outline" class="toggle-password" (click)="togglePassword()"></ion-icon>
+            </div>
+          
+            <div *ngIf="mostrarNuevaContrasena">
+              <ion-label for="newPassword">Nueva Contraseña</ion-label>
+              <ion-input id="newPassword" [type]="newPasswordType" placeholder="Hola.2023"></ion-input>
+              <ion-icon name="eye-outline" class="toggle-password" (click)="toggleNewPassword()"></ion-icon>
+            </div>
+          
+            <button (click)="guardarCambios('newPassword')">Aceptar</button>
           </div>
-
-          <div class="input-container">
-            <ion-label for="newPassword">Nueva Contraseña</ion-label>
-            <ion-input id="newPassword" [type]="newPasswordType" placeholder="Hola.2023"></ion-input>
-            <ion-icon name="eye-outline" class="toggle-password" (click)="toggleNewPassword()"></ion-icon>
-          </div>
+          <button *ngIf="!editarContrasena" (click)="habilitarEdicion('contraseña')">Editar</button>
 
           <ion-button expand="block" color="success">Confirmar</ion-button>
         </ion-card-content>
