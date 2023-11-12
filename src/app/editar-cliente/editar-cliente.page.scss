@@ -1,0 +1,111 @@
+ion-header {
+    background-color: #FFFFFF !important;
+}
+
+.background {
+    --background: #FFFFFF;
+}
+
+ion-card-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 40px;
+    color: #000;
+}
+
+ion-card {
+    --background: #FFFFFF;
+    border: 2px solid #000000;
+    padding: 20px 15px;
+}
+
+ion-label {
+    color: #000;
+    font-weight: bold;
+    margin-bottom: -5px; /* Disminuido para reducir el espacio */
+}
+
+div {
+    margin-bottom: 15px; /* Ajusta la separación entre divs */
+}
+
+ion-label {
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 10px; /* Aumentado para dar más espacio entre el label y la línea negra */
+}
+
+ion-input input {
+    width: 80%; /* Ajusta este valor según lo que necesites */
+    overflow: hidden;
+    white-space: nowrap; /* Esto evitará que el texto pase a la siguiente línea */
+    text-overflow: ellipsis; /* Esto agregará puntos suspensivos si el texto es más largo de lo permitido */
+}
+
+ion-input:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0%;        
+    right: 15%;   /* Ajustado para uniformizar el tamaño de la línea negra */
+    border-bottom: 2px solid #000;
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-icon {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-password {
+    margin-left: 5px; /* Espacio entre el input y el icono */
+    width: 20px; /* Ancho del ícono */
+    height: 20px; /* Altura del ícono */
+    cursor: pointer; /* Cambia el cursor al pasar por encima para indicar que es clicable */
+    color: #000;
+    font-size: 18px;
+}
+
+ion-button {
+    margin-top: 80px; /* Ajusta este valor según lo que necesites para desplazar el botón más abajo */
+    font-weight: bold; /* Texto en negrita */
+}
+
+
+
+/* Para pantallas pequeñas (por ejemplo, menos de 500px) */
+@media only screen and (max-width: 500px) {
+    ion-card {
+        padding: 15px 10px;
+    }
+    ion-input input {
+        width: 90%;
+    }
+    ion-input:after {
+        right: 10%;
+    }
+    ion-button {
+        margin-top: 60px;
+    }
+}
+
+/* Para pantallas medianas (por ejemplo, entre 500px y 700px) */
+@media only screen and (min-width: 500px) and (max-width: 700px) {
+    ion-card {
+        padding: 20px 12px;
+    }
+    ion-input input {
+        width: 85%;
+    }
+    ion-input:after {
+        right: 12%;
+    }
+    ion-button {
+        margin-top: 70px;
+    }
+}

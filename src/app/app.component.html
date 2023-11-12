@@ -11,27 +11,31 @@
       <div style="background-color: #7FC15E; padding: 10px; text-align: center; font-weight: bold; color: rgb(0, 0, 0);">
         Nombre Usuario
       </div>
-  
-        <div class="Perfil">
-          <ion-icon name="person-outline" slot="start" (click)="goToProfile()"></ion-icon>
-          Perfil
-        </div>
-        <div class="comoreciclar">
-          <ion-icon name="leaf-outline" slot="start"></ion-icon>
-          Como reciclar
-        </div>
-        <div class="puntosreciclaje">
-          <ion-icon name="location-outline" slot="start"></ion-icon>
-          Puntos de reciclaje
-        </div>
-        <div class="servicios">
-          <ion-icon name="document-text-outline" slot="start"></ion-icon>
-          Nuestros servicios
-        </div>
-        <div class="cerrar-sesion" >
-          <ion-icon name="power-outline" slot="start" (click)="onLogoutClick"></ion-icon>
-          Cerrar sesión
-        </div>
+
+      <ion-item routerLink="/perfil" lines="none">
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        Perfil
+      </ion-item>
+
+      <ion-item routerLink="/como-reciclar" lines="none">
+        <ion-icon name="leaf-outline" slot="start"></ion-icon>
+        Como reciclar
+      </ion-item>
+
+      <ion-item routerLink="/punto-reciclaje" lines="none">
+        <ion-icon name="location-outline" slot="start"></ion-icon>
+        Puntos de reciclaje
+      </ion-item>
+
+      <ion-item routerLink="/nuestros-servicios" lines="none">
+        <ion-icon name="document-text-outline" slot="start"></ion-icon>
+        Nuestros servicios
+      </ion-item>
+
+      <ion-item (click)="onLogoutClick()" lines="none">
+        <ion-icon name="power-outline" slot="start"></ion-icon>
+        Cerrar sesión
+      </ion-item>
   
     </ion-content>
   </ion-menu>

@@ -1,4 +1,5 @@
 /* CSS DEL MENU DESPLEGABLE */
+
 ion-menu-button {
     --color: rgb(0, 0, 0);
   }
@@ -23,46 +24,68 @@ ion-menu-button {
     --background: #ffffff;
   }
   
-  /* Estilizado general para todos los ítems del menú */
-  .Perfil,
-  .comoreciclar,
-  .puntosreciclaje,
-  .servicios,
+  /* CSS DEL HOME */
+  .background {
+    --background: #ffffff;
+    display: flex;
+  }
+  
+  /* Estilos para dispositivos pequeños (por defecto) */
+  .Perfil {
+    margin-top: 50px;
+  }
+  
   .cerrar-sesion {
-    background-color: #7FC15E;
-    color: rgb(0, 0, 0); /* Color negro para el texto */
+    margin-top: 100px;
+  }
+  
+  /* Estilos para dispositivos medianos */
+  @media (min-width: 601px) and (max-width: 900px) {
+    .Perfil {
+      margin-top: 80px;
+    }
+  
+    .cerrar-sesion {
+      margin-top: 150px;
+    }
+  }
+  
+  /* Estilos para dispositivos grandes */
+  @media (min-width: 901px) {
+    .Perfil {
+      margin-top: 100px;
+    }
+  
+    .cerrar-sesion {
+      margin-top: 200px;
+    }
+  
+    ion-menu {
+      --width: 30%;
+    }
+  }
+  
+  /* Estilizado para <ion-item> dentro del menú */
+  ion-menu ion-item {
+    --color: rgb(0, 0, 0); /* Color de texto */
+    --background: #7FC15E; /* Color de fondo */
+    --ripple-color: rgba(255, 255, 255, 0.1); /* Color del efecto al hacer click */
+    --border-color: #7FC15E; /* Color del borde */
     padding: 14px 20px;
-    border-bottom: 1px solid #7FC15E;
     display: flex;
     align-items: center;
   }
   
-  .Perfil {
-    margin-top: 100px; /* Agrega un margen superior a "Perfil" para desplazar todos los elementos */
+  ion-menu ion-item:hover {
+    --background: #68A249; /* Un color un poco más oscuro al pasar el mouse */
   }
   
-  /* Específico para el ítem "Cerrar sesión" */
-  .cerrar-sesion {
-    margin-top: 200px; /* Desplaza "Cerrar sesión" al fondo */
-  }
-  
-  /* Color de los íconos por separado */
-  .Perfil ion-icon,
-  .comoreciclar ion-icon,
-  .puntosreciclaje ion-icon,
-  .servicios ion-icon {
-    color: rgb(255, 255, 255);
+  ion-menu ion-item ion-icon {
+    color: rgb(255, 255, 255); /* Color de los íconos */
     margin-right: 10px;
   }
   
-  .cerrar-sesion ion-icon {
-    color: rgb(255, 0, 0); /* Color rojo específico para el ícono "Cerrar sesión" */
-    margin-right: 10px;
+  ion-menu ion-item.cerrar-sesion ion-icon[name="power-outline"] {
+    color: rgb(255, 0, 0); /* Color rojo específico para el ícono "power-outline" de "Cerrar sesión" */
   }
-  
-  /* CSS DEL HOME 
-  .background {
-    --background: #ffffff;
-    display: flex;
-  }*/
   

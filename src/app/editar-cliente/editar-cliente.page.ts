@@ -40,6 +40,9 @@ export class EditarClientePage implements OnInit {
 
   constructor(private authService: AuthService, private clienteService: AuthService, private router : Router) { }
 
+  contrasenaActual: string = '';
+  nuevaContrasena: string = '';
+
   passwordType: string = 'password'; // Esto mostrará la contraseña como asteriscos por defecto
   newPasswordType: string = 'password';
 
@@ -91,12 +94,11 @@ export class EditarClientePage implements OnInit {
       data.comuna = this.comunaSeleccionada;
       this.modoEdicion = false;
     } else if (campoId === 'newPassword') {
-      // Añade aquí la lógica para validar y actualizar la contraseña
-      // Por ejemplo, puedes enviar la contraseña actual y la nueva al backend para que se realice la validación y actualización
       let data = {
-        contraseñaActual: this.passwordType, // Asumiendo que tienes una variable para esto
-        nuevaContrasena: this.newPassword // Asumiendo que tienes una variable para esto
+        contraseñaActual: this.contrasenaActual,
+        nuevaContrasena: this.nuevaContrasena
       };
+      // Lógica para enviar los datos al backend
     }
     // Agrega aquí más campos si es necesario
 
@@ -173,6 +175,10 @@ export class EditarClientePage implements OnInit {
 
   goToEditProfile(){
     this.router.navigateByUrl('editar-cliente');
+  }
+
+  onConfirmar(){
+    this.router.navigateByUrl('/perfil');
   }
 
   ngOnInit() {

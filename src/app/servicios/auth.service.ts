@@ -95,7 +95,7 @@ export class AuthService  {
             }),
             catchError(this.handleError)
         );
-}
+  }
 
   obtenerDatosCliente(): Observable<ClienteData> {
     const email = localStorage.getItem('email');

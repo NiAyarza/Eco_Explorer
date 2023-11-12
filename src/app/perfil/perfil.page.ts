@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../servicios/auth.service';
 import { ClienteData } from '../interfaces/clienteData'; // Asegúrate de proporcionar la ruta correcta
 import { Router } from '@angular/router';
+import { MenuControllerService } from '../servicios/menu.service';
 
 @Component({
   selector: 'app-perfil',
@@ -20,7 +21,12 @@ export class PerfilPage implements OnInit {
 
   comunas: any[] = [];
   
-  constructor(private authService: AuthService, private clienteService: AuthService, private router : Router) { }
+  constructor(
+    private authService: AuthService, 
+    private clienteService: AuthService, 
+    private router : Router,
+    private menuService: MenuControllerService
+    ) { }
 
   datosCargados = false;
   comunasCargadas = false;
@@ -90,6 +96,11 @@ export class PerfilPage implements OnInit {
 
   goToEditProfile(){
     this.router.navigateByUrl('editar-cliente');
+  }
+
+  ionViewWillEnter() {
+    this.menuService.enableMenu();
+    this.menuService.showMenuButton();
   }
 
   ngOnInit() {

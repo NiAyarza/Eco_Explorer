@@ -52,21 +52,21 @@
           <div *ngIf="editarContrasena">
             <div class="contraseña">
               <ion-label for="password">Contraseña</ion-label>
-              <ion-input id="contraseña" [type]="passwordType" placeholder="Hola.2023"></ion-input>
+              <ion-input id="contraseña" [type]="passwordType" [(ngModel)]="contrasenaActual" placeholder="Ingrese su contraseña actual"></ion-input>
               <ion-icon name="eye-outline" class="toggle-password" (click)="togglePassword()"></ion-icon>
             </div>
           
             <div *ngIf="mostrarNuevaContrasena">
               <ion-label for="newPassword">Nueva Contraseña</ion-label>
-              <ion-input id="newPassword" [type]="newPasswordType" placeholder="Hola.2023"></ion-input>
+              <ion-input id="newPassword" [type]="newPasswordType" [(ngModel)]="nuevaContrasena" placeholder="Ingrese su nueva contraseña"></ion-input>
               <ion-icon name="eye-outline" class="toggle-password" (click)="toggleNewPassword()"></ion-icon>
             </div>
           
             <button (click)="guardarCambios('newPassword')">Aceptar</button>
           </div>
-          <button *ngIf="!editarContrasena" (click)="habilitarEdicion('contraseña')">Editar</button>
+          <button *ngIf="!editarContrasena" (click)="habilitarEdicion('contraseña')">Editar contraseña</button>
 
-          <ion-button expand="block" color="success">Confirmar</ion-button>
+          <ion-button expand="block" color="success" (click)="onConfirmar()" >Confirmar</ion-button>
         </ion-card-content>
       </div>
     </ion-card>
