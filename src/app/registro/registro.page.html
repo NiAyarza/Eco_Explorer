@@ -4,54 +4,61 @@
   </ion-buttons>
 </ion-header>
 
-<ion-content class="background">
-  <ion-card-title>Crea tu cuenta</ion-card-title>
+  <ion-content class="background">
 
-  <form [formGroup]="registerForm" (ngSubmit)="registrar()">
+    <ion-card>
 
-    <div class="nombre">
-        <ion-label position="stacked">Nombre</ion-label>
-        <ion-input type="text" placeholder="" formControlName="nombre"></ion-input>
-    </div>
+      <ion-card-title>Crea tu cuenta</ion-card-title>
 
-    <div class="apellido">
-        <ion-label position="stacked">Apellido</ion-label>
-        <ion-input type="text" placeholder="" formControlName="apellido"></ion-input>
-    </div>
+      <ion-card-content>
 
-    <div class="rut">
-        <ion-label position="stacked">Rut</ion-label>
-        <ion-input type="text" placeholder="" formControlName="rut"></ion-input>
-    </div>
+        <form [formGroup]="registerForm" (ngSubmit)="registrar()">
 
-    <div class="fecha">
-        <ion-label position="stacked">Fecha de Nacimiento</ion-label>
-        <input type="date" formControlName="fecha_nacimiento">
-    </div>
+          <div class="nombre">
+              <ion-label position="stacked">Nombre</ion-label>
+              <ion-input type="text" placeholder="" formControlName="nombre"></ion-input>
+          </div>
 
-    <div class="comuna">
-      <ion-label position="stacked">Comuna</ion-label>
-      <ion-select formControlName="comuna_id">
-        <ion-select-option *ngFor="let comuna of comunas" [value]="comuna.comuna_id">
-          {{ comuna.nombre }}
-        </ion-select-option>
-      </ion-select>
-    </div>
+          <div class="apellido">
+              <ion-label position="stacked">Apellido</ion-label>
+              <ion-input type="text" placeholder="" formControlName="apellido"></ion-input>
+          </div>
 
-    <div class="email">
-        <ion-label position="stacked">Email</ion-label>
-        <ion-input type="email" placeholder="" formControlName="email"></ion-input>
-    </div>
+          <div class="rut">
+              <ion-label position="stacked">Rut</ion-label>
+              <ion-input type="text" placeholder="" formControlName="rut"></ion-input>
+          </div>
 
-    <div class="contrasenia">
-        <ion-label position="stacked">Contraseña</ion-label>
-        <ion-input type="{{showPassword ? 'text' : 'password'}}" placeholder="" formControlName="contraseña"></ion-input>
-        <ion-icon slot="end" name="{{showPassword ? 'eye-off' : 'eye'}}" (click)="togglePassword()"></ion-icon>
-    </div>
+          <div class="fecha">
+              <ion-label position="stacked">Fecha de Nacimiento</ion-label>
+              <input type="date" formControlName="fecha_nacimiento">
+          </div>
 
-    <ion-button type="submit" expand="full" color="success" class="ion-margin-top">Confirmar</ion-button>
+          <div class="comuna">
+            <ion-label position="stacked">Comuna</ion-label>
+            <ion-select formControlName="comuna_id">
+              <ion-select-option *ngFor="let comuna of comunas" [value]="comuna.comuna_id">
+                {{ comuna.nombre }}
+              </ion-select-option>
+            </ion-select>
+          </div>
 
-</form>
+          <div class="email">
+              <ion-label position="stacked">Email</ion-label>
+              <ion-input type="email" placeholder="" formControlName="email"></ion-input>
+          </div>
 
-<p class="ion-text-center">Tienes tu cuenta? <a href="/login">Ingresa aquí</a></p>
+          <div class="contrasenia">
+              <ion-label position="stacked">Contraseña</ion-label>
+              <ion-input type="{{showPassword ? 'text' : 'password'}}" placeholder="" formControlName="contraseña"></ion-input>
+              <ion-icon slot="end" name="{{showPassword ? 'eye-off' : 'eye'}}" (click)="togglePassword()"></ion-icon>
+          </div>
+
+          <ion-button type="submit" expand="full" color="success" class="ion-margin-top">Confirmar</ion-button>
+
+        </form>
+    </ion-card-content>
+      
+      <p class="ion-text-center">Tienes tu cuenta? <a href="/login">Ingresa aquí</a></p>
+    </ion-card>
 </ion-content>

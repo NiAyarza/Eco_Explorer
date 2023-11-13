@@ -20,12 +20,12 @@
 
         <div class="nombre">
           <ion-label position="stacked">Nombre</ion-label>
-          <ion-input type="text" [(ngModel)]="datosCliente.nombre"></ion-input>
+          <ion-input type="text" [(ngModel)]="datosCliente.nombre" readonly></ion-input>
         </div>
         
         <div class="apellido">
           <ion-label position="stacked">Apellido</ion-label>
-          <ion-input type="text" placeholder="Perez" [(ngModel)]="datosCliente.apellido"></ion-input>
+          <ion-input type="text" placeholder="Perez" [(ngModel)]="datosCliente.apellido" readonly></ion-input>
         </div>
         
         <div class="fecha">
@@ -35,12 +35,12 @@
         
         <div class="email">
           <ion-label>Email</ion-label>
-          <ion-input type="email" placeholder="ejemplo@email.com" [(ngModel)]="datosCliente.email"></ion-input>
+          <ion-input type="email" placeholder="ejemplo@email.com" [(ngModel)]="datosCliente.email" readonly></ion-input>
         </div>
         
         <div class="comuna">
           <ion-label>Comuna</ion-label>
-          <ion-input type="text" [value]="datosCliente.comuna" disabled></ion-input>
+          <ion-input type="text" [value]="datosCliente.comuna" readonly></ion-input>
         </div>
 
       </ion-card-content>

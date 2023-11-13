@@ -60,6 +60,7 @@
         }
 
         function actualizarComuna($conn, $email, $nuevoComuna) {
+            error_log("Actualizando comuna para: $email con comuna_id: $nuevoComuna");
             if (isset($userData["error"])) return $userData;
 
             // Validar comuna
@@ -74,15 +75,34 @@
                 return array("error" => "Comuna ID no es válida.");
             }
 
-            $stmt = $conn->prepare("UPDATE cliente SET comuna_id=? WHERE email=?");
+            $stmt = $conn->prepare("UPDATE cliente SET comu_id=? WHERE email=?");
             $stmt->bind_param("is", $comuna_id, $email);
             $result = $stmt->execute();
             $stmt->close();
             return $result ? array("success" => "Comuna actualizada.") : array("error" => "Error al actualizar la comuna.");
         }
 
-        function actualizarContrasena($conn, $email, $nuevaContrasena) {
-            if (isset($userData["error"])) return $userData;
+        function actualizarContrasena($conn, $email, $contrasenas) {
+            if (!is_array($contrasenas) || !isset($contrasenas['contraseñaActual']) || !isset($contrasenas['nuevaContrasena'])) {
+                return array("error" => "Formato de contraseña inválido.");
+            }
+        
+            $contraseñaActual = $contrasenas['contraseñaActual'];
+            $nuevaContrasena = $contrasenas['nuevaContrasena'];
+            
+            // Obtener la contraseña actual del usuario
+            $stmt = $conn->prepare("SELECT contraseña FROM cliente WHERE email=?");
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $user = $result->fetch_assoc();
+            $current_password_hashed = $user['contraseña'];
+            $stmt->close();
+
+            // Verificar que la contraseña actual coincida
+            if (!password_verify($contraseñaActual, $current_password_hashed)) {
+                return array("error" => "La contraseña actual no es correcta.");
+            }
 
             // Validar longitud contraseña
             $longitud_minima = 8;

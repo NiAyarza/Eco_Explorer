@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../servicios/auth.service';
 import { ClienteData } from '../interfaces/clienteData'; //
 import { Router } from '@angular/router';
+import { MenuControllerService } from '../servicios/menu.service';
 
 
 @Component({
@@ -10,9 +11,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./editar-cliente.page.scss'],
 })
 export class EditarClientePage implements OnInit {
-
+  modoEdicionNombre: boolean = false;
+  modoEdicionApellido: boolean = false;
+  modoEdicionComuna: boolean = false;
   comunaSeleccionada: string = ''; 
-  modoEdicion: boolean = false;
+  nombreComunaSeleccionada: string = '';
 
   datosCargados = false;
   comunasCargadas = false;
@@ -24,7 +27,7 @@ export class EditarClientePage implements OnInit {
     email: '',
     comuna: ''
   };
-
+  
   comunas: any[] = [];
 
   // Usaremos ViewChild para obtener referencias a los campos
@@ -38,7 +41,11 @@ export class EditarClientePage implements OnInit {
   newPassword: string = "";
   // ... puedes añadir más variables para otros campos
 
-  constructor(private authService: AuthService, private clienteService: AuthService, private router : Router) { }
+  constructor(private authService: AuthService, 
+    private clienteService: AuthService, 
+    private router : Router,
+    private menuService: MenuControllerService,
+    ) { }
 
   contrasenaActual: string = '';
   nuevaContrasena: string = '';
@@ -67,22 +74,33 @@ export class EditarClientePage implements OnInit {
   
   habilitarEdicion(campoId: string) {
     if (campoId === 'nombre') {
-      this.nombreInput.nativeElement.disabled = false;
-      this.nombreInput.nativeElement.focus();
+      this.modoEdicionNombre = true;
     } else if (campoId === 'apellido') {
-      this.apellidoInput.nativeElement.disabled = false;
-      this.apellidoInput.nativeElement.focus();
+      this.modoEdicionApellido = true;
     } else if (campoId === 'comuna') {
-      this.modoEdicion = true; // Habilitar el modo de edición para la comuna
+      this.modoEdicionComuna = true;
     }if (campoId === 'contraseña') {
       this.editarContrasena = true;
       this.mostrarNuevaContrasena = true;
     }
-    // ... puedes añadir más campos de esta manera
   }
 
+  cancelarEdicion(campoId: string) {
+    if (campoId === 'nombre') {
+      this.modoEdicionNombre = false;
+      this.datosCliente.nombre = this.datosClienteOriginal.nombre;
+    }
+    if (campoId === 'apellido') {
+      this.modoEdicionApellido = false;
+      this.datosCliente.apellido = this.datosClienteOriginal.apellido;
+    }
+    if (campoId === 'contraseña') {
+      this.editarContrasena = false;
+    }
+  }
+  
   guardarCambios(campoId: string) {
-    let data: any = {}; // Cambia esto a un objeto genérico
+    let data: any = {};
 
     if (campoId === 'nombre') {
       data.nombre = this.datosCliente.nombre;
@@ -91,10 +109,18 @@ export class EditarClientePage implements OnInit {
       data.apellido = this.datosCliente.apellido;
       this.apellidoInput.nativeElement.disabled = true;
     } else if (campoId === 'comuna') {
-      data.comuna = this.comunaSeleccionada;
-      this.modoEdicion = false;
+      const comunaSeleccionada = this.comunas.find(comuna => 
+        comuna.nombre.toLowerCase() === this.nombreComunaSeleccionada.toLowerCase());
+      
+      if (comunaSeleccionada) {
+        data.comuna = parseInt(comunaSeleccionada.comuna_id);
+      } else {
+        console.error('Comuna no encontrada');
+        return;
+      }
+      this.modoEdicionComuna = false;
     } else if (campoId === 'newPassword') {
-      let data = {
+      data.contrasena = {
         contraseñaActual: this.contrasenaActual,
         nuevaContrasena: this.nuevaContrasena
       };
@@ -134,6 +160,14 @@ export class EditarClientePage implements OnInit {
     );
   }
 
+  datosClienteOriginal: ClienteData = {
+    nombre: '',
+    apellido: '',
+    fecha_nac: '',
+    email: '',
+    comuna: ''
+  };
+
   private asignarDatosCliente(data: any): void {
     this.datosCliente = {
       nombre: data.nombre,
@@ -142,7 +176,7 @@ export class EditarClientePage implements OnInit {
       email: data.email,
       comuna: data.Comu_id,
     };
-    
+    this.datosClienteOriginal = {...this.datosCliente};
   }
 
   cargarComunas() {
@@ -171,7 +205,6 @@ export class EditarClientePage implements OnInit {
       }
     }
   }
-  
 
   goToEditProfile(){
     this.router.navigateByUrl('editar-cliente');
@@ -179,6 +212,11 @@ export class EditarClientePage implements OnInit {
 
   onConfirmar(){
     this.router.navigateByUrl('/perfil');
+  }
+
+  ionViewWillEnter() {
+    this.menuService.disableMenu();
+    this.menuService.hideMenuButton();
   }
 
   ngOnInit() {

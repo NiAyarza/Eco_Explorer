@@ -12,42 +12,46 @@
 
       <div *ngIf="datosCliente">
         <ion-card-content>
-
           <div class="nombre">
-            <label>Nombre:</label>
-            <input type="text" [(ngModel)]="datosCliente.nombre" #nombreInput disabled>
-            <button (click)="habilitarEdicion('nombre')">Editar</button>
-            <button (click)="guardarCambios('nombre')">Aceptar</button>
-          </div>
+            <!-- Mostrar solo el label y botón de editar cuando no esté en modo de edición -->
+            <label *ngIf="!modoEdicionNombre">Nombre: {{ datosCliente.nombre }}</label>
+            <button *ngIf="!modoEdicionNombre" (click)="habilitarEdicion('nombre')">Editar</button>
+        
+            <!-- Mostrar el input, botón de aceptar y cancelar cuando esté en modo de edición -->
+            <input *ngIf="modoEdicionNombre" type="text" [(ngModel)]="datosCliente.nombre" #nombreInput>
+            <button *ngIf="modoEdicionNombre" (click)="guardarCambios('nombre')">Aceptar</button>
+            <button *ngIf="modoEdicionNombre" (click)="cancelarEdicion('nombre')">Cancelar</button>
+        </div>
+          
 
-          <div class="apellido">
-            <label>Apellido:</label>
-            <input type="text" [(ngModel)]="datosCliente.apellido" #apellidoInput disabled>
-            <button (click)="habilitarEdicion('apellido')">Editar</button>
-            <button (click)="guardarCambios('apellido')">Aceptar</button>
-          </div>
+        <div class="nombre">
+          <label *ngIf="!modoEdicionApellido">Nombre: {{ datosCliente.apellido }}</label>
+          <button *ngIf="!modoEdicionApellido" (click)="habilitarEdicion('apellido')">Editar</button>
+      
+          <input *ngIf="modoEdicionApellido" type="text" [(ngModel)]="datosCliente.apellido" #nombreInput>
+          <button *ngIf="modoEdicionApellido" (click)="guardarCambios('apellido')">Aceptar</button>
+          <button *ngIf="modoEdicionApellido" (click)="cancelarEdicion('apellido')">Cancelar</button>
+        </div>
 
-          <ion-select [(ngModel)]="comunaSeleccionada">
-            <div *ngIf="modoEdicion; else vistaNormal">
-              <div class="comuna">
-                <ion-label position="stacked">Comuna</ion-label>
-                <ion-select formControlName="comuna_id">
-                  <ion-select-option *ngFor="let comuna of comunas" [value]="comuna.comuna_id">
-                    {{ comuna.nombre }}
-                  </ion-select-option>
-                </ion-select>
-              </div>
-              <button (click)="guardarCambios('comuna')">Aceptar</button>
-            </div>
-            
-            <ng-template #vistaNormal>
-              <div class="comuna">
-                <ion-label>Comuna</ion-label>
-                <ion-input type="text" [value]="datosCliente.comuna" disabled></ion-input>
-              </div>
-              <button (click)="habilitarEdicion('comuna')">Editar</button>
-            </ng-template>
-          </ion-select>
+        <div *ngIf="!modoEdicionComuna; else modoEdicionTemplate">
+          <div class="comuna">
+            <ion-label>Comuna</ion-label>
+            <ion-input type="text" [value]="datosCliente.comuna" disabled></ion-input>
+          </div>
+          <button (click)="habilitarEdicion('comuna')">Editar</button>
+        </div>
+        
+        <ng-template #modoEdicionTemplate>
+          <div class="comuna">
+            <ion-label position="stacked">Comuna</ion-label>
+            <ion-select *ngIf="modoEdicionComuna" [(ngModel)]="nombreComunaSeleccionada">
+              <ion-select-option *ngFor="let comuna of comunas" [value]="comuna.nombre">
+                {{ comuna.nombre }}
+              </ion-select-option>
+            </ion-select>
+          </div>
+          <button (click)="guardarCambios('comuna')">Aceptar</button>
+        </ng-template>
 
           <div *ngIf="editarContrasena">
             <div class="contraseña">
@@ -63,6 +67,7 @@
             </div>
           
             <button (click)="guardarCambios('newPassword')">Aceptar</button>
+            <button *ngIf="editarContrasena" (click)="cancelarEdicion('contraseña')">Cancelar</button>
           </div>
           <button *ngIf="!editarContrasena" (click)="habilitarEdicion('contraseña')">Editar contraseña</button>
 
