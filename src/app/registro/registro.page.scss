@@ -19,6 +19,8 @@ ion-card {
     border: 2px solid #000000;
 }
 
+
+
 ion-card-title {
     text-align: center;
     font-weight: bold;
@@ -29,6 +31,7 @@ ion-label {
     color: #000;
     font-weight: bold;
     font-size: 14px;
+    margin-top:1em;
 }
 
 ion-input {
@@ -36,7 +39,7 @@ ion-input {
     --placeholder-color: #000000;
     --highlight-color-focused: #000;
     --border-style: none;
-    --padding-end: 10%; 
+    --padding-end: 10; 
     color: #000;
     position: relative;
 }
@@ -63,10 +66,13 @@ ion-select {
 }
 
 ion-icon[slot="end"] {
-    color: #000;
+    color: #000000;
     position: absolute;
-    right: 20px;
+    right: 5px;
+    bottom: 87px;
     font-size: 20px;
+    background: #ffffff;
+
 }
 
 ion-button {

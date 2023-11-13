@@ -19,13 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     // Validar mail
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        die("Correo electrónico no es válido.");
+        die(json_encode("Correo electrónico no es válido."));
     }
     // Validar formato fecha nacimiento
     $fecha = DateTime::createFromFormat('Y-m-d', $fecha_nacimiento);
     $errors = DateTime::getLastErrors();
     if (!empty($errors['warning_count'])) {
-        die("Fecha de nacimiento no es válida, yyyy-mm-dd.");
+        die(json_encode("Fecha de nacimiento no es válida, yyyy-mm-dd."));
     }
     // Validar Rut
     function validarRUT($rut) {
@@ -55,16 +55,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
         return false;
     }
-    if (validarRUT($rut)) {
-        echo "RUT válido.";
-    } else {
-        echo "RUT no válido.";
-    }
 
     // Validar longitud contraseña
     $longitud_minima = 8;
     if (strlen($contraseña) < $longitud_minima) {
-        die("La contraseña debe tener al menos $longitud_minima caracteres.");
+        die(json_encode("La contraseña debe tener al menos $longitud_minima caracteres."));
     }
     
     // Hash a la contraseña
@@ -77,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $resultado = $stmt->get_result();
     if ($resultado->num_rows === 0) {
-        die("Comuna ID no es válida.");
+        die(json_encode("Comuna ID no es válida."));
     }
     $stmt->close();
 
@@ -86,14 +81,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssssssi", $rut, $nombre, $apellido, $fecha_nacimiento, $email, $hashed_password, $comuna_id);
     
     if ($stmt->execute()) {
-        echo "Registro exitoso!";
+        echo json_encode(["success" =>"Registro exitoso!"]);
     } else {
-        echo "Error: " . $stmt->error;
+        echo(json_encode("Error: " . $stmt->error));
     }
 
     $stmt->close();
     $conn->close();
 } else {
-    echo "Solicitud no permitida";
+    echo(json_encode("Solicitud no permitida"));
 }
 ?>

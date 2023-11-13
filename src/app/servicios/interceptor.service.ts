@@ -13,7 +13,7 @@ export class InterceptorService implements HttpInterceptor{
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     // Lista de rutas que no requieren token
-    const noAuthRequired = ['/login', '/registro'];
+    const noAuthRequired = ['/registro', '/comuna', '/login'];
 
     // Verificar si la URL actual está en la lista de noAuthRequired
     if (noAuthRequired.some(url => req.url.includes(url))) {
