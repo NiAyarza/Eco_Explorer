@@ -1,0 +1,69 @@
+/* Encabezado y título */
+ion-header {
+    background-color: #FFFFFF;
+  }
+  
+  ion-toolbar {
+    --background: #FFFFFF;
+  }
+  
+  ion-back-button {
+    color: #000;
+  }
+  
+  .background {
+    --background: #FFFFFF;
+    padding: 16px; /* Agrega un poco de espacio alrededor del contenido */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los botones */
+  }
+  
+  ion-title {
+    font-size: 28px; /* Tamaño grande para dispositivos más grandes */
+    font-weight: bold;
+    text-align: center;
+    color: #000000;
+    margin-top: 1rem;
+    margin-bottom: 2rem; /* Agrega espacio debajo del título */
+  }
+  
+  .transferencia,
+  .webpay {
+    --background: transparent;
+    width: 100%; /* Toma el ancho completo del contenedor */
+    padding: 2em; /* Elimina el padding para dispositivos pequeños */
+  }
+  
+  .transferencia img,
+  .webpay img {
+    width: 100%; /* Imagen toma el ancho completo del botón */
+    height: auto; /* Altura se ajusta automáticamente para mantener la proporción */
+    object-fit: contain; /* Asegura que la imagen se ajuste dentro del espacio sin deformarse */
+  }
+  
+  /* Media queries para ajustes responsivos */
+  @media only screen and (max-width: 768px) {
+    ion-title {
+      font-size: 3em; /* Reduce el tamaño del título para tabletas */
+    }
+  
+    .transferencia img,
+    .webpay img {
+      height: 20em; /* Ajusta la altura de las imágenes para tabletas */
+      width: 100%;
+  
+    }
+  }
+  
+  @media only screen and (max-width: 480px) {
+    ion-title {
+      font-size: 2em; /* Reduce el tamaño del título para móviles */
+    }
+  
+    .transferencia img,
+    .webpay img {
+      height: 15em; /* Ajusta la altura de las imágenes para móviles */
+    }
+  }
+  

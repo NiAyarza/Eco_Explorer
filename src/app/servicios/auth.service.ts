@@ -15,6 +15,8 @@ import { Router } from '@angular/router';
 export class AuthService  {
   private  apiUrl  = 'http://localhost/EcoExplorer/BACKEND/api';
 
+  private datosContrato: any = {};
+
   constructor(private http: HttpClient, private router: Router) { }
 
   // registrar a un usuario
@@ -114,5 +116,26 @@ export class AuthService  {
       return this.http.get<any[]>(`${this.apiUrl}/puntoAcopio.php`);
   }
 
+  getServicios(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/servicio.php`);
+  }
+
+  setDatosContrato(datos: any) {
+    this.datosContrato = datos;
+  }
+
+  getDatosContrato() {
+    return this.datosContrato;
+  }
+
+  enviarDatosContrato(datosContrato: any) {
+    const formData = new FormData();
+    formData.append('fechaInicio', datosContrato.fechaInicio);
+    formData.append('fechaFin', datosContrato.fechaFin);
+    formData.append('servicio_id', datosContrato.servicio_id.toString()); // Asegúrate de que sea una cadena
+    formData.append('email', datosContrato.email);
+
+    return this.http.post(`${this.apiUrl}/contrato.php`, formData);
+  }
   
 }

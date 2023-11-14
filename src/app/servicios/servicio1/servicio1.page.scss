@@ -1,0 +1,41 @@
+ion-header {
+    ion-toolbar {
+      --background: #f8f8f8;
+      --color: #333;
+
+    }
+
+  }
+
+  ion-title {
+    font-size: 28px; /* Tamaño grande para dispositivos más grandes */
+    font-weight: bold;
+    text-align: center;
+    color: #000000;
+    position: relative;
+    margin-top: 1rem;
+  }
+  
+ion-card {
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    background: #FFFFFF;
+}
+
+ion-content {
+    --background: #fff;
+    
+    .service-list {
+        padding-left: 20px;
+        margin: 15px 0;
+        
+        li {
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #000000;
+      }
+    }
+  }
+  

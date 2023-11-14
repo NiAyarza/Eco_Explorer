@@ -1,14 +1,83 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>punto-reciclaje</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <head>
-    <title>Simple Map</title>
-    
-  </head>
-  <body>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDizDsAxhR9zIFXVxoO"></script>  </body>
+<ion-content class="background">
+  <ion-list>
+    <ion-title>Puntos Limpios</ion-title>
+    <!-- Tarjeta para el punto limpio Triciclos -->
+    <ion-card>
+      
+      <ion-card-header>
+        <ion-card-title>Punto limpio Triciclos</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Dirección: Avenida Los Carrera 301 Estacionamiento Homecenter Sodimac Mall Plaza Mirador, Concepción, Bío Bío</p>
+        <p>Se reciclan: Botellas de vidrio, latas, plásticos, pilas, papel y cartón</p>
+        <p>Apertura: 10:00 - Cierre: 17:00</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Creo Reciclaje</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Dirección: Maipú 87, Concepción</p>
+        <p>Se reciclan: Latas, plasticos, carton</p>
+        <p>Apertura: 09:00 - Cierre: 19:00</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Punto Limpio Parque Ecuador</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Dirección: Veteranos 79, Parque Ecuador, Concepción</p>
+        <p>Se reciclan: Latas, plasticos, cartón y pape</p>
+        <p>Apertura: 00:00 - Cierre: 00:00</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Punto Limpio Almirante Latorre</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Dirección: 935 Almirante Latorre, Talcahuano</p>
+        <p>Se reciclan: Vidrio, plasticos, carton, papel</p>
+        <p>Apertura: 00:00 - Cierre: 00:00</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Bio Bio Recicla</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Dirección: Francia 200, Talcahuano</p>
+        <p>Se reciclan: Latas, plasticos, carton</p>
+        <p>Apertura: 09:00 - Cierre: 18:00</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Punto Limpio Edelmira</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Dirección: 383 Edelmira, Talcahuano</p>
+        <p>Se reciclan: Cartón, plasticos y vidrios</p>
+        <p>Apertura: 00:00 - Cierre: 00:00</p>
+      </ion-card-content>
+    </ion-card>
+
+
+    <!-- Repite para los demás puntos limpios -->
+  </ion-list>  
 </ion-content>

@@ -1,0 +1,126 @@
+ion-header {
+    background-color: #FFFFFF;
+  }
+  
+  ion-toolbar {
+    --background: transparent;
+    --border-color: transparent;
+  }
+  
+  ion-back-button {
+    color: #000;
+  }
+  
+  .background {
+    --ion-background-color: #fff;
+    padding: 16px;
+  }
+  
+  ion-card-title {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    color: #000;
+    padding-bottom: 20px;
+  }
+  
+  ion-card {
+    margin: 10px;
+    border: 2px solid #000000;
+    padding: 40px 20px;
+    border-radius: 1.5em;
+    --background: #ffffff; /* Cambiado de #f8f8f8 a #ffffff */
+  }
+  
+  ion-card-content {
+    display: flex; /* Usar flexbox para alinear etiquetas e inputs */
+    flex-direction: column; /* Alinear los elementos en columna */
+    padding: 22px;
+  }
+  
+  ion-label {
+    color: #000;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 5px; /* Espacio entre la etiqueta y el input */
+  }
+  
+  ion-input{
+    color: #000000;
+    font-weight: bold;
+    left: 17em;
+    font-size: 1.5em;
+    top: -30px;
+  }
+
+  .custom-item {
+    --background: white; /* Color de fondo */
+    --color: black; /* Color del texto */
+    --placeholder-color: #666; /* Color del texto del placeholder */
+    --font-weight: bold;
+    ion-input, ion-textarea {
+      --color: black; /* Color del texto del input y textarea */
+      --placeholder-color: #666; /* Color del texto del placeholder */
+    }
+  }
+
+  .custom-item ion-textarea {
+    --min-height: 200px; /* Ajusta este valor según tus necesidades */
+  }
+  
+  
+  ion-select {
+    --background: transparent;
+    --padding-start: 0;
+    --padding-end: 10%;
+    color: #000000;
+    font-weight: bold;
+  }
+  
+  ion-button {
+    --background: #44D362;
+    --border-radius: 15px;
+    --color: #ffffff;
+    font-weight: bold;
+    margin-top: 100px;
+  }
+  
+  /* Responsive design adjustments */
+  @media (max-width: 768px) {
+    ion-title {
+        font-size: 1.5em;
+    }
+  
+    ion-card {
+        margin: 5px;
+    }
+  
+    ion-card-content {
+        padding: 20px;
+    }
+  
+    ion-label {
+      font-size: 1.2em;
+    }
+  
+    ion-input,
+    ion-select {
+      font-size: 1em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    ion-title {
+        font-size: 1.3em;
+    }
+  
+    ion-button {
+        margin-top: 30px;
+    }
+  
+    ion-input,
+    ion-select {
+        font-size: 0.9em;
+    }
+  }
+  

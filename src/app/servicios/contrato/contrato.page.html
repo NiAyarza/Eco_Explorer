@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/escoger-servicio"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+
+  <ion-card>
+
+    <ion-card-title>Contrato</ion-card-title>
+
+    <ion-card-content>
+        <div>
+          <ion-label position="stacked">Servicio</ion-label>
+          <ion-input type="text" [value]="datosContrato.nombre" readonly></ion-input>
+        </div>
+        
+        <div>
+          <ion-label position="stacked">Descripción</ion-label>
+          <ion-textarea [value]="datosContrato.descripcion" maxlength="250" readonly></ion-textarea>
+        </div>
+  
+        <div>
+          <ion-label position="stacked">Precio</ion-label>
+          <ion-input type="number" [value]="datosContrato.precio" readonly></ion-input>
+        </div>
+  
+        <div>
+          <ion-label position="stacked">Fecha Inicio</ion-label>
+          <ion-input type="date" [value]="fechaInicio"></ion-input>
+        </div>
+  
+        <div>
+          <ion-label position="stacked">Fecha Fin</ion-label>
+          <ion-input type="date" [value]="fechaFin"></ion-input>
+        </div>
+  
+        <div class="email">
+          <ion-label>Email Cliente</ion-label>
+          <ion-input type="email" [value]="datosContrato.email"></ion-input>
+        </div>
+
+      
+      <ion-button (click)="confirmarContrato()" color="success" expand="block" >
+        Confirmar Contrato
+      </ion-button>
+
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

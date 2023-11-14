@@ -1,0 +1,91 @@
+ion-header {
+    background-color: #f8f8f8;
+}
+
+ion-toolbar {
+    --background: transparent;
+    --border-color: transparent;
+}
+
+ion-back-button {
+    color: #000;
+}
+
+.background {
+    --ion-background-color: #fff;
+    padding: 16px;
+}
+
+ion-card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 1.5em;
+    --background: #ffffff;
+    margin: 10px;
+    padding: 20px 15px;
+}
+
+ion-card-title {
+    font-size: 1.7em;
+    font-weight: bold;
+    text-align: center;
+    color: #000;
+
+}
+
+ion-label {
+    color: #000;
+    padding: 5px 0;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+ion-input,
+ion-textarea {
+    --padding-start: 0;
+    --padding-end: 0;
+    --background: #ffffff;
+    --border-color: transparent;
+    --border-style: none;
+    --border-width: 0;
+    margin-top: 3px;
+    margin-bottom: 15px;
+    position: relative; /* Para la línea inferior */
+}
+
+ion-input::after,
+ion-textarea::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background-color: #000;
+    position: absolute;
+    bottom: -1px; /* Ajuste para que la línea se muestre justo debajo del input */
+    left: 0;
+    right: 0;
+}
+
+/* Estilo para input[type="date"] para alinear el icono del calendario a la derecha */
+input[type="date"] {
+    cursor: pointer;
+    padding-right: 30px; /* Espacio para el ícono del calendario */
+    width: 100%;
+}
+
+ion-button {
+    --background: #44D362;
+    --border-radius: 15px;
+    --color: #ffffff;
+    font-weight: bold;
+    margin-top: 30px;
+    width: 100%; /* Ocupar el ancho completo */
+}
+
+/* Ajustes para dispositivos pequeños */
+@media (max-width: 768px) {
+    ion-card {
+        padding: 10px;
+    }
+    ion-card-title {
+        font-size: 1.3em;
+    }
+}

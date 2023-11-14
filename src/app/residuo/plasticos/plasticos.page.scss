@@ -6,7 +6,7 @@ ion-toolbar {
     --background: #c9f1fd;
 }
 
-ion-back-button{
+ion-back-button {
     color: #000;
 }
 
@@ -69,20 +69,19 @@ ion-button {
     max-width: 200px; // Maximum width of buttons to avoid them being too wide on large screens
 }
 
-/* Estilos específicos para los botones que necesitan estar en la segunda fila */
-.verde, .amarillo, .rojo {
-    grid-row: 1; // Ubica estos botones en la primera fila
+/* Estilos específicos para los botones dentro de .verde, .amarillo, y .rojo */
+.verde ion-button, .amarillo ion-button, .rojo ion-button {
+    --ion-font-size: 12px; // Ajusta el tamaño de fuente para estos botones
+    font-size: 12px;
 }
 
 /* Responsividad */
-@media (max-width: 576px ) {
-
-
+@media (max-width: 576px) {
     ion-title {
         font-size: 26px; // Ajusta el tamaño de fuente para pantallas pequeñas
     }
 
-    .metodo{
+    .metodo {
         padding: 10px; // Ajusta el padding para pantallas pequeñas
         margin-top: 5px; // Ajusta el margen superior para pantallas pequeñas
         font-size: 14px;
@@ -96,8 +95,8 @@ ion-button {
 
     ion-button {
         --border-radius: 15px; // Esquinas más redondeadas para botones en pantallas pequeñas
-        max-width: 100%; // Ancho máximo más pequeño para los botones
-        margin-top:10px;
+        max-width: 150px; // Ancho máximo más pequeño para los botones
+        margin-top: 10px;
     }
 
     .container {

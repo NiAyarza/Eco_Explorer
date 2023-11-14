@@ -63,6 +63,30 @@ const routes: Routes = [
     path: 'rojo',
     loadChildren: () => import('./residuo/rojo/rojo.module').then( m => m.RojoPageModule)
   },
+  {
+    path: 'contrato',
+    loadChildren: () => import('./servicios/contrato/contrato.module').then( m => m.ContratoPageModule)
+  },
+  {
+    path: 'escoger-servicio',
+    loadChildren: () => import('./servicios/escoger-servicio/escoger-servicio.module').then( m => m.EscogerServicioPageModule)
+  },
+  {
+    path: 'nuestros-servicios',
+    loadChildren: () => import('./servicios/nuestros-servicios/nuestros-servicios.module').then( m => m.NuestrosServiciosPageModule)
+  },
+  {
+    path: 'pago',
+    loadChildren: () => import('./servicios/pago/pago.module').then( m => m.PagoPageModule)
+  },
+  {
+    path: 'servicio1',
+    loadChildren: () => import('./servicios/servicio1/servicio1.module').then( m => m.Servicio1PageModule)
+  },
+  {
+    path: 'servicio2',
+    loadChildren: () => import('./servicios/servicio2/servicio2.module').then( m => m.Servicio2PageModule)
+  },
 ];
 
 @NgModule({
