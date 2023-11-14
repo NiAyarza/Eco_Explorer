@@ -57,6 +57,7 @@ export class ContratoPage implements OnInit {
         } else {
           // Mostrar mensaje de éxito
           console.log('Contrato enviado con éxito', response);
+          this.mostrarMensaje(response.success);
         }
       },
       error => {

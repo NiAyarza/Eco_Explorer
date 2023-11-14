@@ -12,6 +12,16 @@
     </ion-card-header>
 
     <ion-card-content>
+
+      <ion-segment [(ngModel)]="tipoUsuario">
+        <ion-segment-button value="cliente">
+          <ion-label>Cliente</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="empleado">
+          <ion-label>Empleado</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+      
       <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="email">
           <ion-label>Email</ion-label>

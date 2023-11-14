@@ -12,12 +12,12 @@
         Nombre Usuario
       </div>
 
-      <ion-item routerLink="/perfil" lines="none">
+      <ion-item *ngIf="esCliente" routerLink="/perfil" lines="none">
         <ion-icon name="person-outline" slot="start"></ion-icon>
         Perfil
       </ion-item>
 
-      <ion-item routerLink="/home" lines="none">
+      <ion-item *ngIf="esCliente" routerLink="/home" lines="none">
         <ion-icon name="leaf-outline" slot="start"></ion-icon>
         Como reciclar
       </ion-item>
@@ -27,9 +27,19 @@
         Puntos de reciclaje
       </ion-item>
 
-      <ion-item routerLink="/nuestros-servicios" lines="none">
+      <ion-item *ngIf="esCliente" routerLink="/nuestros-servicios" lines="none">
         <ion-icon name="document-text-outline" slot="start"></ion-icon>
         Nuestros servicios
+      </ion-item>
+
+      <ion-item *ngIf="esEmpleado" routerLink="/perfil-empleado">
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        Perfil
+      </ion-item>
+
+      <ion-item *ngIf="esEmpleado" routerLink="/orden-retiro" lines="none">
+        <ion-icon name="document-text-outline" slot="start"></ion-icon>
+        Orden retiros
       </ion-item>
 
       <ion-item (click)="onLogoutClick()" lines="none">

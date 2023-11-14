@@ -87,6 +87,18 @@ const routes: Routes = [
     path: 'servicio2',
     loadChildren: () => import('./servicios/servicio2/servicio2.module').then( m => m.Servicio2PageModule)
   },
+  {
+    path: 'perfil-empleado',
+    loadChildren: () => import('./empleado/perfil-empleado/perfil-empleado.module').then( m => m.PerfilEmpleadoPageModule)
+  },
+  {
+    path: 'orden-retiro',
+    loadChildren: () => import('./empleado/orden-retiro/orden-retiro.module').then( m => m.OrdenRetiroPageModule)
+  },
+  {
+    path: 'registro-emp',
+    loadChildren: () => import('./empleado/registro-emp/registro-emp.module').then( m => m.RegistroEmpPageModule)
+  },
 ];
 
 @NgModule({

@@ -16,6 +16,8 @@ export class LoginPage implements OnInit {
   loginForm: FormGroup;
   showPassword = false;
 
+  tipoUsuario: string = 'cliente';
+
   constructor(
     private authService: AuthService, 
     private router: Router, 
@@ -34,8 +36,9 @@ export class LoginPage implements OnInit {
     if (this.loginForm.valid) {
       const email = this.loginForm.get('email')?.value;
       const password = this.loginForm.get('password')?.value;
+      const tipo = this.tipoUsuario;
 
-      this.authService.login(email, password).subscribe(
+      this.authService.login(email, password, tipo).subscribe(
         (response) => {
           console.log('Login exitoso', response);
           this.router.navigateByUrl('/home')

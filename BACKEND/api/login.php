@@ -10,12 +10,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 $data = json_decode(file_get_contents("php://input"));
 
-if (isset($data->email) && isset($data->password)) {
+if (isset($data->email) && isset($data->password) && isset($data->tipo)) {
     
     $email = $data->email;
     $password = $data->password;
+    $tipo = $data->tipo;
+
+    $tabla = ($tipo === 'cliente') ? 'cliente' : 'empleado';
     
-    $stmt = $conn->prepare("SELECT * FROM cliente WHERE email = ?");
+    $stmt = $conn->prepare("SELECT * FROM $tabla WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $user = $stmt->get_result()->fetch_assoc();

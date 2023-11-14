@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu-empleado"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+
+  <ion-card>
+
+    <ion-card-header>
+      <div class="header-flex">
+        <ion-card-title>Orden de recolección</ion-card-title>
+      </div>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <div class="numorden">
+        <ion-label position="stacked">N° Orden:</ion-label>
+        <ion-input type="number" value="1" readonly></ion-input>
+      </div>
+
+      <div class="contrato">
+        <ion-label position="stacked">Contrato:</ion-label>
+        <ion-input type="number" value="1" readonly></ion-input>
+      </div>
+
+      <div class="email">
+        <ion-label>Email cliente</ion-label>
+        <ion-input type="email" placeholder="ejemplo@email.com"></ion-input>
+      </div>
+
+      <div class="hora-inicio">
+        <ion-label position="stacked">Hora inicio:</ion-label>
+        <input type="time">
+      </div>
+
+      <div class="hora-fin">
+        <ion-label position="stacked">Hora de fin:</ion-label>
+        <input type="time">
+      </div>
+
+      <div class="fecha">
+        <ion-label position="stacked">Fecha:</ion-label>
+        <input type="date">
+      </div>
+
+     
+
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

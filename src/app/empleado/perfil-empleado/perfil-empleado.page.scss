@@ -1,0 +1,74 @@
+ion-header {
+    background-color: #FFFFFF !important;
+}
+
+ion-toolbar {
+    --background: #FFFFFF;
+}
+
+ion-back-button{
+    color: #000;
+}
+
+
+.background {
+    --background: #FFFFFF;
+}
+
+.header-flex {
+    display: flex;
+    align-items: center; /* Asegura que los elementos estén alineados verticalmente */
+    justify-content: space-between;
+}
+
+ion-card-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 40px;
+    color: #000;
+    flex-grow: 1; /* Esto permite que el título ocupe el espacio disponible en el contenedor flex */
+}
+
+ion-card {
+    --background: #FFFFFF;
+    border: 2px solid #000000;
+    padding: 20px 15px;
+}
+
+ion-label {
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+div {
+    margin-bottom: 20px;
+}
+
+ion-input input {
+    width: 80%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+ion-input:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    right: 15%;
+    border-bottom: 2px solid #000;
+}
+
+
+.fecha{
+    --background: #FFFFFF;
+    --border-color: #000;
+    --border-style: solid;
+    --border-width: 1px;
+    --color: #000;
+}

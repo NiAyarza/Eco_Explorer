@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu-empleado"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  
+  <ion-card>
+    
+    <ion-card-header>
+      <div class="header-flex">
+          <ion-card-title>Perfil Empleado</ion-card-title>
+      </div>
+    </ion-card-header>
+
+    <div *ngIf="datosCliente">
+      <ion-card-content>
+
+        <div class="nombre">
+          <ion-label position="stacked">Nombre</ion-label>
+          <ion-input type="text" [(ngModel)]="datosCliente.nombre" readonly></ion-input>
+        </div>
+        
+        <div class="apellido">
+          <ion-label position="stacked">Apellido</ion-label>
+          <ion-input type="text" placeholder="Perez" [(ngModel)]="datosCliente.apellido" readonly></ion-input>
+        </div>
+        
+        <div class="fecha">
+          <ion-label position="stacked">Fecha de Nacimiento</ion-label>
+          <ion-input type="date" [(ngModel)]="datosCliente.fecha_nac"></ion-input>
+        </div>
+        
+        <div class="email">
+          <ion-label>Email</ion-label>
+          <ion-input type="email" placeholder="ejemplo@email.com" [(ngModel)]="datosCliente.email" readonly></ion-input>
+        </div>
+        
+        <div class="comuna">
+          <ion-label>Comuna</ion-label>
+          <ion-input type="text" [value]="datosCliente.comuna" readonly></ion-input>
+        </div>
+
+      </ion-card-content>
+    </div>
+  </ion-card>
+</ion-content>

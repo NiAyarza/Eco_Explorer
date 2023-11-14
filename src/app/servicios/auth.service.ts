@@ -23,19 +23,23 @@ export class AuthService  {
   registro(formData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/registro.php`, formData);
   }
+  registroEmp(formData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/registroEmp.php`, formData);
+  }
   // Obtener comunas guardadas en la base de datos
   getComunas(): Observable<any> {
     return this.http.get(`${this.apiUrl}/comuna.php`);
   }
 
-  login(email: string, password: string): Observable<any> {
-    const body = { email, password };
+  login(email: string, password: string, tipo: string): Observable<any> {
+    const body = { email, password, tipo };
     return this.http.post<any>(`${this.apiUrl}/login.php`, body)
       .pipe(
         tap(response => {
           if (response && response.success) {
             localStorage.setItem('token', response.token);
             localStorage.setItem('email', email);
+            localStorage.setItem('tipo', tipo);
             const now = new Date();
             const expiry = new Date(now.getTime() + 60 * 60 * 1000 * 24);
             localStorage.setItem('tokenExpiry', expiry.toString());
@@ -65,6 +69,7 @@ export class AuthService  {
     localStorage.removeItem('token');
     localStorage.removeItem('email');
     localStorage.removeItem('tokenExpiry');
+    localStorage.removeItem('tipo');
     this.router.navigateByUrl('/login'); 
   }
 
@@ -102,6 +107,14 @@ export class AuthService  {
   obtenerDatosCliente(): Observable<ClienteData> {
     const email = localStorage.getItem('email');
     return this.http.get<ClienteData>(`${this.apiUrl}/obtenerDatosCliente.php?email=${email}`)
+        .pipe(
+            catchError(this.handleError)
+        );
+  }
+
+  obtenerDatosEmp(): Observable<ClienteData> {
+    const email = localStorage.getItem('email');
+    return this.http.get<ClienteData>(`${this.apiUrl}/obtenerDatosEmp.php?email=${email}`)
         .pipe(
             catchError(this.handleError)
         );

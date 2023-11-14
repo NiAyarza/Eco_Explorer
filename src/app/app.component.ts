@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuControllerService } from './servicios/menu.service';
 import { MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
@@ -9,7 +9,9 @@ import { AuthService } from './servicios/auth.service';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  esCliente: boolean = false;
+  esEmpleado: boolean = false;
 
   public showMenu: boolean = true;
   public menuDisabled: boolean = true;
@@ -30,6 +32,14 @@ export class AppComponent {
       this.menuDisabled = disabled;
     });
   }
+
+  ngOnInit() {
+    const tipo = localStorage.getItem('tipo');
+    console.log('Tipo de usuario:', tipo);
+    this.esCliente = tipo === 'cliente';
+    this.esEmpleado = tipo === 'empleado';
+  }
+  
   goToProfile(){
     this.router.navigateByUrl('/perfil');
   }

@@ -1,0 +1,151 @@
+ion-header {
+    background-color: #FFFFFF !important;
+}
+
+ion-toolbar {
+    --background: #FFFFFF;
+}
+
+ion-back-button {
+    color: #000;
+}
+
+.background {
+    --background: #FFFFFF;
+}
+
+ion-card {
+    --background: #FFFFFF;  
+    border: 2px solid #000000;
+}
+
+
+
+ion-card-title {
+    text-align: center;
+    font-weight: bold;
+    color: #000;
+}
+
+ion-label {
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top:1em;
+}
+
+ion-input {
+    --background: transparent;
+    --placeholder-color: #000000;
+    --highlight-color-focused: #000;
+    --border-style: none;
+    --padding-end: 10; 
+    color: #000;
+    position: relative;
+}
+
+ion-input:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0%;        
+    right: 15%; 
+    border-bottom: 2px solid #000;
+}
+
+ion-select {
+    --background: transparent;
+    --padding-start: 10%;
+    --padding-end: 10%;
+    color: #000;
+}
+
+.password-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+ion-icon[slot="end"] {
+    color: #000000;
+    position: absolute;
+    right: 5px;
+    bottom: 87px;
+    font-size: 20px;
+    background: #ffffff;
+
+}
+
+ion-button {
+    --background: #44D362;
+    --border-radius: 15px;
+    --color: #bd3d3d;
+    font-weight: bold;
+}
+
+/* Media Queries para dispositivos pequeños (móviles) */
+@media only screen and (max-width: 600px) {
+    ion-card-title {
+        font-size: 20px;
+    }
+
+    ion-input, ion-select {
+        --padding-end: 5%;
+    }
+
+    .password-wrapper ion-icon {
+        right: 10px;
+        top: auto;
+    }
+
+    ion-button {
+        --background: #44D362;
+        --border-radius: 15px;
+        --color: #ffffff;
+        font-weight: bold;
+        margin-top: 30px;
+    }
+}
+
+/* Media Queries para dispositivos medianos (tabletas) */
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+    ion-card-title {
+        font-size: 22px;
+    }
+
+    ion-input, ion-select {
+        --padding-end: 8%;
+    }
+
+    .password-wrapper ion-icon {
+        right: 15px;
+        top: auto;
+    }
+
+    ion-button {
+        --border-radius: 12px;
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+/* Media Queries para dispositivos grandes (ordenadores) */
+@media only screen and (min-width: 769px) {
+    ion-card-title {
+        font-size: 24px;
+    }
+
+    ion-input, ion-select {
+        --padding-end: 10%;
+    }
+
+    .password-wrapper ion-icon {
+        right: 20px;
+        top: auto;
+    }
+
+    ion-button {
+        --border-radius: 15px;
+        font-size: 18px;
+        padding: 14px;
+    }
+}
