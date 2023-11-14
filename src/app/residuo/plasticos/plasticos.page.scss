@@ -1,0 +1,107 @@
+ion-header {
+    background: #c9f1fd !important;
+}
+
+ion-toolbar {
+    --background: #c9f1fd;
+}
+
+ion-back-button{
+    color: #000;
+}
+
+.background {
+    --background: #c9f1fd;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    color: #000000;
+}
+
+ion-title {
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    color: #000000;
+    margin-top: 15px; // Un pequeño margen superior para dar espacio
+}
+
+.plasticos {
+    width: 60%;
+    margin-left: 70px;
+    display: flex;
+    margin-top: 10px;
+}
+
+.plasticos img {
+    max-width: 100%;
+    height: auto;
+}
+
+.metodo {
+    font-size: 14px;
+    color: #000000;
+    padding: 15px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.selecciona {
+    font-size: 14px;
+    color: #000000;
+    padding: 30px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+ion-button {
+    margin-top: -10px;
+    --color: #000;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    --padding-start: 10px;
+    --padding-end: 10px;
+    --border-radius: 20px; // Rounded corners for buttons
+    --border-style: solid; // Adds a solid border
+    --border-width: 2px; // Sets the border width
+    --border-color: black; // Sets the border color to black
+    width: 100%; // Makes the buttons take the full width of their container
+    max-width: 200px; // Maximum width of buttons to avoid them being too wide on large screens
+}
+
+/* Estilos específicos para los botones que necesitan estar en la segunda fila */
+.verde, .amarillo, .rojo {
+    grid-row: 1; // Ubica estos botones en la primera fila
+}
+
+/* Responsividad */
+@media (max-width: 576px ) {
+
+
+    ion-title {
+        font-size: 26px; // Ajusta el tamaño de fuente para pantallas pequeñas
+    }
+
+    .metodo{
+        padding: 10px; // Ajusta el padding para pantallas pequeñas
+        margin-top: 5px; // Ajusta el margen superior para pantallas pequeñas
+        font-size: 14px;
+    }
+    
+    .selecciona {
+        padding: 10px; // Ajusta el padding para pantallas pequeñas
+        margin-top: 30px; // Ajusta el margen superior para pantallas pequeñas
+        font-size: 14px;
+    }
+
+    ion-button {
+        --border-radius: 15px; // Esquinas más redondeadas para botones en pantallas pequeñas
+        max-width: 100%; // Ancho máximo más pequeño para los botones
+        margin-top:10px;
+    }
+
+    .container {
+        grid-template-columns: 1fr; // Una sola columna en pantallas pequeñas
+        grid-gap: 10px; // Espacio entre elementos más pequeño
+    }
+}

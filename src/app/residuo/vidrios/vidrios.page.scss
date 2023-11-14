@@ -1,0 +1,71 @@
+ion-header {
+    background: #629c44 !important;
+}
+
+ion-toolbar {
+    --background: #629c44;
+}
+
+ion-back-button{
+    color: #000;
+}
+
+ion-title {
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    color: #000000;
+    margin-top: 20px; /* Un pequeño margen superior para dar espacio */
+}
+
+.background {
+    --background: #629c44;
+}
+
+.info-card {
+    max-width: 100%;
+    width: 90%;
+    margin: 2px 20px;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    --background: #1e3811;
+    --box-shadow: none;
+    color: #ffffff;
+    margin-top: 15px;
+    position: relative; /* Añadido para posicionar las imágenes con respecto a esta tarjeta */
+
+    ion-card-content {
+        max-width: 100%;
+        width: 95%;
+        margin: 0 auto;
+        padding: 5px;
+
+        p {
+            font-size: 13px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 9px;
+
+            li {
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+.botellasdevidrio {
+    position: absolute; /* Ajuste para posicionarlo correctamente */
+    bottom: 80px; /* Ajustado para que quede en la parte inferior */
+    left: 25px;
+    width: 90%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.botellasdevidrio img {
+    max-width: 100%;
+    height: auto;
+}

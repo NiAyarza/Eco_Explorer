@@ -1,0 +1,53 @@
+ion-header {
+    background: #e61610 !important;
+}
+
+ion-toolbar {
+    --background: #e61610;
+}
+
+ion-back-button {
+    color: #000;
+}
+
+.background {
+    --background: #e61610;
+}
+
+p {
+    text-align: center;
+    color: #ffffff;
+    padding: 1px;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.PVC3, .PS6, .OTHER7 {
+    width: 15%; /* Se ajusta al contenido */
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+    display: flex;
+    justify-content: center;
+}
+
+.PVC3 img, .PS6 img, .OTHER7 img {
+    max-width: 100%; /* Permite que la imagen se escale con el contenedor */
+    height: auto;
+}
+
+/* Media Queries para diferentes tamaños de pantalla */
+@media only screen and (max-width: 767px) {
+    /* Para teléfonos móviles */
+    .PVC3, .PS6, .OTHER7 {
+        width: 15%; /* Se ajusta al contenido */
+        margin-left: auto; /* Pequeño margen para evitar que el contenido toque los bordes */
+        margin-right: auto;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* Para tablets y dispositivos más grandes */
+    .PVC3, .PS6, .OTHER7 {
+        width: 15%; /* Tamaño específico para tablets en adelante */
+        margin-left: auto; /* Pequeño margen para evitar que el contenido toque los bordes */
+    }
+}

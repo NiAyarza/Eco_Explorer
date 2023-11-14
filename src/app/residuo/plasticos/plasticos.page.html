@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+
+  <ion-title>Reciclar Plásticos</ion-title>
+  
+  <div class="plasticos">
+    <img src="../../assets/images/plasticos/plastico.png" alt="Plástico">
+  </div>
+
+  <p class="metodo">
+    Para poder reciclar tus plásticos debes lavarlos y <br> 
+    secarlos bien para que no queden residuos y <br>separarlos
+    de acuerdo al tipo de plásticos por <br>categoría para
+    que de esa manera se facilite el <br>poder llevarlos al reciclaje.
+  </p>
+
+  <p class="selecciona">
+    Selecciona un color para ver los diferentes tipos <br>de 
+    plásticos que se pueden reciclar
+  </p>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" class="verde">
+        <ion-button expand="block" color="success" href="/verde">Si</ion-button>
+      </ion-col>
+      <ion-col size="4" class="amarillo">
+        <ion-button expand="block" color="warning" href="/amarillo">Poco común</ion-button>
+      </ion-col>
+      <ion-col size="4" class="rojo">
+        <ion-button expand="block" color="danger" href="/rojo">No</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

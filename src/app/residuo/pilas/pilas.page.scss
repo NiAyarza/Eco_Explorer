@@ -1,0 +1,74 @@
+ion-header {
+    background: #c3bb38 !important;
+}
+
+
+ion-toolbar {
+    --background: #c3bb38;
+}
+
+ion-back-button{
+    color: #000;
+}
+
+ion-title {
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    color: #000000;
+    margin-top: 10px; /* Un pequeño margen superior para dar espacio */
+}
+
+.background {
+    --background: #c3bb38;
+}
+
+.info-card {
+    max-width: 100%;
+    width: 95%;
+    margin: 5px 10px;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    --background: #8c8525;
+    --box-shadow: none;
+    color: #ffffff;
+    margin-top: 5px;
+    position: relative; /* Añadido para posicionar las imágenes con respecto a esta tarjeta */
+
+    ion-card-content {
+        max-width: 100%;
+        width: 90%;
+        margin: 0 auto;
+        padding: 5px;
+
+        p {
+            font-size: 13px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 3px;
+
+            li {
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+/* Estilos para las imágenes de las pilas */
+
+.conjuntopilas {
+    position: absolute; /* Ajuste para posicionarlo correctamente */
+    bottom: 10px; /* Ajustado para que quede en la parte inferior */
+    left: 45px;
+    width: 60%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.conjuntopilas img {
+    max-width: 100%;
+    height: auto;
+}

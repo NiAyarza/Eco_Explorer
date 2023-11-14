@@ -1,0 +1,73 @@
+ion-header {
+    background: #aa671d !important;
+}
+
+ion-toolbar {
+    --background: #aa671d;
+}
+
+ion-back-button{
+    color: #000;
+}
+
+ion-title {
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    color: #000000;
+    margin-top: 5px; /* Un pequeño margen superior para dar espacio */
+}
+
+.background {
+    --background: #aa671d;
+}
+
+.info-card {
+    max-width: 100%;
+    width: 90%;
+    margin: 2px 3px;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    left: 12px;
+    --background: #8c8525;
+    --box-shadow: none;
+    color: #ffffff;
+    margin-top: 15px;
+    position: relative; /* Añadido para posicionar las imágenes con respecto a esta tarjeta */
+
+    ion-card-content {
+        max-width: 100%;
+        width: 95%;
+        margin: 0 auto;
+        padding: 5px;
+
+        p {
+            font-size: 13px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 9px;
+
+            li {
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+.conjuntocartonpapel {
+    position: absolute; /* Ajuste para posicionarlo correctamente */
+    bottom: 30px; /* Modificado para que se sitúe más abajo */
+    left: 20px;
+    width: 90%;
+    max-width: 100%;
+    margin-right: 8px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.conjuntocartonpapel img {
+    max-width: 100%;
+    height: auto;
+}
