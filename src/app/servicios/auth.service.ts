@@ -110,5 +110,9 @@ export class AuthService  {
       return throwError('Algo salió mal. Por favor, inténtalo de nuevo.');
   }
 
+  getPuntosAcopio(): Observable<any> {
+      return this.http.get<any[]>(`${this.apiUrl}/puntoAcopio.php`);
+  }
+
   
 }

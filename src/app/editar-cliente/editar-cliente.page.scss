@@ -71,12 +71,14 @@ ion-input:after {
 }
 
 .toggle-password {
-    margin-left: 5px; /* Espacio entre el input y el icono */
+    margin-left: 15.3em; /* Espacio entre el input y el icono */
     width: 20px; /* Ancho del ícono */
     height: 20px; /* Altura del ícono */
     cursor: pointer; /* Cambia el cursor al pasar por encima para indicar que es clicable */
     color: #000;
     font-size: 18px;
+    margin-top: -20px;
+
 }
 
 ion-button {
